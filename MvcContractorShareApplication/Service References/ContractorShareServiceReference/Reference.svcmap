@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="38ac9545-503f-4033-9784-61b0e1120f69" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://contractorshare.apphb.com/ContractorShare.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ContractorShare.xsd" MetadataType="Schema" ID="dee889d4-7309-4631-90b4-6e1bf474c2cf" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd0" />
+    <MetadataFile FileName="ContractorShare1.xsd" MetadataType="Schema" ID="171c6601-df6c-4290-8e8c-69daf100fc6f" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd1" />
+    <MetadataFile FileName="ContractorShare.wsdl" MetadataType="Wsdl" ID="d8d9bed1-ccbe-4f13-b454-63a660cd7e2f" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?wsdl" />
+    <MetadataFile FileName="ContractorShare.disco" MetadataType="Disco" ID="9f3bb2e9-fb5e-4cfd-8e64-e60a6c0d22d3" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?disco" />
+    <MetadataFile FileName="ContractorShare2.xsd" MetadataType="Schema" ID="1c34725a-29be-4058-a0bb-8ae15f320a91" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd4" />
+    <MetadataFile FileName="ContractorShare3.xsd" MetadataType="Schema" ID="a4a90eda-2cdd-48a9-afc7-8062863b82e8" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd2" />
+    <MetadataFile FileName="ContractorShare4.xsd" MetadataType="Schema" ID="40387ac8-e4be-40b5-ba22-e16c3b279288" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

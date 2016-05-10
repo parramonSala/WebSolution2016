@@ -1,0 +1,59 @@
+﻿@helper ActiveItem(string actionName, string controllerName, string areaName)
+{
+    if (ViewContext.RouteData.Values["action"].ToString() == actionName &&
+            ViewContext.RouteData.Values["controller"].ToString() == controllerName &&
+            (ViewContext.RouteData.DataTokens["area"] == null || ViewContext.RouteData.DataTokens["area"].ToString() == areaName))
+    {
+        @:active
+    }
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../Home">FindMyHandyMan</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @* Contractor == usertype 2
+                   Client == usertype 1
+                *@
+
+                @if (Convert.ToInt32(Session["usertype"]) == 1)
+                {  
+                    <li class="@ActiveItem("Post New Job", "Home", null)">@Html.ActionLink("Post new Job", "PostNewJob", "Home")</li>
+                    <li class="@ActiveItem("My Jobs", "Home", null)">@Html.ActionLink("My Jobs", "MyJobs", "Home")</li>
+                    <li class="@ActiveItem("Find Contractors", "Home", null)">@Html.ActionLink("Find Contractors", "ContractorSearch", "User")</li>
+                    <li class="@ActiveItem("My Profile", "Home", null)">@Html.ActionLink("My Profile", "MyClientProfile", "User")</li>
+                    <li class="@ActiveItem("Proposals", "Proposal", null)">@Html.ActionLink("Proposals", "MyProposals", "Proposal")</li>                    
+                    <li class="@ActiveItem("Appointments", "Appointment", null)">@Html.ActionLink("Appointments", "MyActiveAppointments", "Appointment")</li>                    
+                }
+                else if (Convert.ToInt32(Session["usertype"]) == 2)
+                {
+                    <li class="@ActiveItem("My profile", "Home", null)">@Html.ActionLink("Find Jobs", "FindJobs", "Home")</li>
+                    <li class="@ActiveItem("My profile", "Home", null)">@Html.ActionLink("My Jobs", "ContractorMyJobs", "Home")</li>
+                    <li class="@ActiveItem("My Jobs", "Home", null)">@Html.ActionLink("My Profile", "MyContractorProfile", "User")</li>
+                    <li class="@ActiveItem("Proposals", "Proposal", null)">@Html.ActionLink("Proposals", "MyProposals", "Proposal")</li>
+                    <li class="@ActiveItem("Appointments", "Appointment", null)">@Html.ActionLink("Appointments", "MyActiveAppointments", "Appointment")</li>                    
+
+                }
+                else
+                {
+                    <li class="@ActiveItem("Index", "Home", null)">@Html.ActionLink("Home", "Index", "Home")</li>
+                }
+                
+
+
+            </ul>
+             <ul class="nav navbar-nav navbar-right">
+                 @Html.Partial("_LoginPartial")
+            </ul>
+ 
+         </div> 
+        </div>
+    </div>

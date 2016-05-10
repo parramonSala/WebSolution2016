@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MvcContractorShareApplication.Models.Job>
+
+@{
+    ViewBag.Title = "MyJobs";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Open Jobs</h2>
+    </div>
+    }
+
+    <br />
+
+  <table class="table table-striped" id="myjobstable">
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td width="15%"><b>
+          @Html.ActionLink(item.JobName, "DetailsJob", "Home", new { Id = item.JobId }, null /* html attributes */)
+
+        </b>
+        <br />
+        @Html.DisplayFor(modelItem => item.StatusName)
+        <br />
+        Posted on  @Html.DisplayFor(modelItem => item.Posted)
+        </td>
+        <td>
+        </td>
+        <td width="10%">
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td width="50%">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td width="15%">
+            @Html.DisplayFor(modelItem => item.Address)
+            <br />
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td width="10%">
+            <div class="btn-group">
+								<button class="btn btn-sm btn-primary">Action</button>
+								<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href="ui-elements.html#"> @Html.ActionLink("View", "DetailsJob", new { id=item.JobId })</a></li>
+									<li><a href="ui-elements.html#"> @Html.ActionLink("Edit", "EditJob", new { id=item.JobId })</a></li>
+                                    <li><a href="ui-elements.html#"> @Html.ActionLink("Cancel", "CancelJob", new { id=item.JobId })</a></li>
+
+                                </ul>
+							</div>
+        </td>
+    </tr>
+    
+}
+</table>
+
+        @Html.ActionLink("View my closed jobs","MyClosedJobs", "Home")

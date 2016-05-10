@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "ClientIndex";
+}
+
+        @Html.Partial("_NavBar")
+
+@section featured {
+
+@*    <div id="Carousel-olga" class="carousel slide" data-ride="carousel" data-wrap="true">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#slide1" data-slide-to="0" class="active"></li>
+            <li data-target="#slide2" data-slide-to="1" class=""></li>
+            <li data-target="#slide3" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">*@
+            <div id="slide1" class="item">
+                <img class="first-slide" src="images/plumber_layout.jpg" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Client</h1>
+                        <p><a class="btn btn-lg btn-primary" href="/Home/RegisterMain" role="button">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            @*<div id="slide2" class="item active">
+                <img class="second-slide" src="images/Untitled.png" alt="Second slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Another example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div id="slide3" class="item">
+                <img class="third-slide" src="images/plumber.jpg" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>One more for good measure.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+        @*<a class="left carousel-control" data-slide="prev" href="#Carousel-olga"><span class="icon-prev"></span></a>
+        <a class="right carousel-control" data-slide="next" href="#Carousel-olga"><span class="icon-next"></span></a>
+
+    </div>*@
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>@ViewBag.Title.</h1>
+            <h2>@ViewBag.Message</h2>
+            <p>
+                To learn more about ASP.NET MVC visit
+      <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+      The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+      If you have any questions about ASP.NET MVC visit
+            </p>
+            <a class="btn btn-large btn-success" href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+        </div>
+    </div>
+}
+<!-- Example row of columns -->
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting Started</h2>
+        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+    enables a clean separation of concerns and that gives you full control over markup
+    for enjoyable, agile development. ASP.NET MVC includes many features that enable
+    fast, TDD-friendly development for creating sophisticated applications that use
+    the latest web standards.
+    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Add NuGet packages and jump-start your coding</h2>
+        <p>NuGet makes it easy to install and update free libraries and tools.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Find Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more &raquo;</a></p>
+    </div>
+</div>

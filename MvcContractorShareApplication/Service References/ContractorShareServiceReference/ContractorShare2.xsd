@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ContractorShareService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ContractorShareService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfUserFavourite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserFavourite" nillable="true" type="tns:UserFavourite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserFavourite" nillable="true" type="tns:ArrayOfUserFavourite" />
+  <xs:complexType name="UserFavourite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserFavourite" nillable="true" type="tns:UserFavourite" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Appointments" nillable="true" type="tns:ArrayOfAppointment" />
+      <xs:element minOccurs="0" name="Appointments1" nillable="true" type="tns:ArrayOfAppointment" />
+      <xs:element minOccurs="0" name="Bugs" nillable="true" type="tns:ArrayOfBug" />
+      <xs:element minOccurs="0" name="CAverageRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CNumOfRates" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CNumServices" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CTotalRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
+      <xs:element minOccurs="0" name="CompanyCoordX" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyCoordY" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contractor_website" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EncPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element minOccurs="0" name="Messages1" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Preferences" nillable="true" type="tns:ArrayOfPreference" />
+      <xs:element minOccurs="0" name="PricePerHour" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Proposals" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Proposals1" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Proposals2" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Ratings" nillable="true" type="tns:ArrayOfRating" />
+      <xs:element minOccurs="0" name="Ratings1" nillable="true" type="tns:ArrayOfRating" />
+      <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfService" />
+      <xs:element minOccurs="0" name="Services1" nillable="true" type="tns:ArrayOfService" />
+      <xs:element minOccurs="0" name="Suggestions" nillable="true" type="tns:ArrayOfSuggestion" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCategories" nillable="true" type="tns:ArrayOfUserCategory" />
+      <xs:element minOccurs="0" name="UserDenunces" nillable="true" type="tns:ArrayOfUserDenunce" />
+      <xs:element minOccurs="0" name="UserFavourites" nillable="true" type="tns:ArrayOfUserFavourite" />
+      <xs:element minOccurs="0" name="UserFavourites1" nillable="true" type="tns:ArrayOfUserFavourite" />
+      <xs:element minOccurs="0" name="UserType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfAppointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Appointment" nillable="true" type="tns:Appointment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointment" nillable="true" type="tns:ArrayOfAppointment" />
+  <xs:complexType name="Appointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ClientID" type="xs:int" />
+      <xs:element minOccurs="0" name="ContractorID" type="xs:int" />
+      <xs:element minOccurs="0" name="CoordX" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CoordY" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MeetingTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Proposal" nillable="true" type="tns:Proposal" />
+      <xs:element minOccurs="0" name="ProposalId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Appointment" nillable="true" type="tns:Appointment" />
+  <xs:complexType name="Proposal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Appointments" nillable="true" type="tns:ArrayOfAppointment" />
+      <xs:element minOccurs="0" name="AproxDuration" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element minOccurs="0" name="ProposedPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProposedTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedByUserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User2" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Proposal" nillable="true" type="tns:Proposal" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Message1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Proposal" nillable="true" type="tns:Proposal" />
+      <xs:element minOccurs="0" name="ProposalID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="Service">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Appointments" nillable="true" type="tns:ArrayOfAppointment" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientID" type="xs:int" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
+      <xs:element minOccurs="0" name="ContractorID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CoordX" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CoordY" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostedDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Proposals" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Ratings" nillable="true" type="tns:ArrayOfRating" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:ArrayOfTask" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Service" nillable="true" type="tns:Service" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfService" />
+      <xs:element minOccurs="0" name="UserCategories" nillable="true" type="tns:ArrayOfUserCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="ArrayOfService">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfService" nillable="true" type="tns:ArrayOfService" />
+  <xs:complexType name="ArrayOfUserCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserCategory" nillable="true" type="tns:UserCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserCategory" nillable="true" type="tns:ArrayOfUserCategory" />
+  <xs:complexType name="UserCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCategory" nillable="true" type="tns:UserCategory" />
+  <xs:complexType name="ArrayOfComment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="tns:Comment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComment" nillable="true" type="tns:ArrayOfComment" />
+  <xs:complexType name="Comment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommentText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+      <xs:element minOccurs="0" name="ServiceID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Task" nillable="true" type="tns:Task" />
+      <xs:element minOccurs="0" name="TaskID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Comment" nillable="true" type="tns:Comment" />
+  <xs:complexType name="Task">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+      <xs:element minOccurs="0" name="ServiceID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Task" nillable="true" type="tns:Task" />
+  <xs:complexType name="Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Appointments" nillable="true" type="tns:ArrayOfAppointment" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Proposals" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfService" />
+      <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:ArrayOfTask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Status" nillable="true" type="tns:Status" />
+  <xs:complexType name="ArrayOfProposal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Proposal" nillable="true" type="tns:Proposal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProposal" nillable="true" type="tns:ArrayOfProposal" />
+  <xs:complexType name="ArrayOfTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTask" nillable="true" type="tns:ArrayOfTask" />
+  <xs:complexType name="ArrayOfRating">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rating" nillable="true" type="tns:Rating" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRating" nillable="true" type="tns:ArrayOfRating" />
+  <xs:complexType name="Rating">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="tns:Service" />
+      <xs:element minOccurs="0" name="ServiceID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="rating1" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rating" nillable="true" type="tns:Rating" />
+  <xs:complexType name="ArrayOfBug">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bug" nillable="true" type="tns:Bug" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBug" nillable="true" type="tns:ArrayOfBug" />
+  <xs:complexType name="Bug">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BugText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedByUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bug" nillable="true" type="tns:Bug" />
+  <xs:complexType name="ArrayOfPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Preference" nillable="true" type="tns:Preference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPreference" nillable="true" type="tns:ArrayOfPreference" />
+  <xs:complexType name="Preference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EnableNotifications" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ShareLocation" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowContactEmail" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowContactNumber" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Preference" nillable="true" type="tns:Preference" />
+  <xs:complexType name="ArrayOfSuggestion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Suggestion" nillable="true" type="tns:Suggestion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSuggestion" nillable="true" type="tns:ArrayOfSuggestion" />
+  <xs:complexType name="Suggestion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedByUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SuggestionText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Suggestion" nillable="true" type="tns:Suggestion" />
+  <xs:complexType name="ArrayOfUserDenunce">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDenunce" nillable="true" type="tns:UserDenunce" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDenunce" nillable="true" type="tns:ArrayOfUserDenunce" />
+  <xs:complexType name="UserDenunce">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockUser" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DenunceComment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserID" type="xs:int" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDenunce" nillable="true" type="tns:UserDenunce" />
+</xs:schema>

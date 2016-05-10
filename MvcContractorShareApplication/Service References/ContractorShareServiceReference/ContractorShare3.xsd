@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginInfo">
+    <xs:sequence>
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginInfo" nillable="true" type="tns:LoginInfo" />
+  <xs:complexType name="AuthenticationResult">
+    <xs:sequence>
+      <xs:element name="UserId" type="xs:int" />
+      <xs:element name="UserType" type="xs:int" />
+      <xs:element name="error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationResult" nillable="true" type="tns:AuthenticationResult" />
+  <xs:complexType name="RegisterInfo">
+    <xs:sequence>
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Password" nillable="true" type="xs:string" />
+      <xs:element name="UserType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegisterInfo" nillable="true" type="tns:RegisterInfo" />
+  <xs:complexType name="ResetPasswordInfo">
+    <xs:sequence>
+      <xs:element name="Email" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResetPasswordInfo" nillable="true" type="tns:ResetPasswordInfo" />
+  <xs:complexType name="ResetPasswordResult">
+    <xs:sequence>
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Result" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResetPasswordResult" nillable="true" type="tns:ResetPasswordResult" />
+  <xs:complexType name="ChangePasswordInfo">
+    <xs:sequence>
+      <xs:element name="NewPassword" nillable="true" type="xs:string" />
+      <xs:element name="OldPassword" nillable="true" type="xs:string" />
+      <xs:element name="email" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangePasswordInfo" nillable="true" type="tns:ChangePasswordInfo" />
+  <xs:complexType name="ChangePreferencesInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="enableNotifications" type="xs:boolean" />
+      <xs:element minOccurs="0" name="shareLocation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="showContactEmail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="showContactNumber" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangePreferencesInfo" nillable="true" type="tns:ChangePreferencesInfo" />
+  <xs:complexType name="PreferencesResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="enableNotifications" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="shareLocation" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="showContactEmail" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="showContactNumber" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreferencesResult" nillable="true" type="tns:PreferencesResult" />
+  <xs:complexType name="ArrayOfContractorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContractorInfo" nillable="true" type="tns:ContractorInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContractorInfo" nillable="true" type="tns:ArrayOfContractorInfo" />
+  <xs:complexType name="ContractorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AverageRate" nillable="true" type="xs:double" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyCoordX" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyCoordY" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRates" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PricePerHour" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="website" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContractorInfo" nillable="true" type="tns:ContractorInfo" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AverageRate" nillable="true" type="xs:double" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q2:ArrayOfint" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyCoordX" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyCoordY" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumOfRates" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PricePerHour" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="website" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="resultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:complexType name="JobInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientID" type="xs:int" />
+      <xs:element minOccurs="0" name="ContractorID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CoordX" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CoordY" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostedDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobInfo" nillable="true" type="tns:JobInfo" />
+  <xs:complexType name="ArrayOfJobInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobInfo" nillable="true" type="tns:JobInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobInfo" nillable="true" type="tns:ArrayOfJobInfo" />
+  <xs:complexType name="CommentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommentId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaskId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommentInfo" nillable="true" type="tns:CommentInfo" />
+  <xs:complexType name="ArrayOfCommentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommentInfo" nillable="true" type="tns:CommentInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCommentInfo" nillable="true" type="tns:ArrayOfCommentInfo" />
+  <xs:complexType name="ProposalInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AproxDuration" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="FromUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobId" type="xs:int" />
+      <xs:element minOccurs="0" name="JobName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProposalId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProposedPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProposedTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedByUserId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProposalInfo" nillable="true" type="tns:ProposalInfo" />
+  <xs:complexType name="UpdateProposalStatusInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedByUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateProposalStatusInfo" nillable="true" type="tns:UpdateProposalStatusInfo" />
+  <xs:complexType name="ArrayOfProposalInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProposalInfo" nillable="true" type="tns:ProposalInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProposalInfo" nillable="true" type="tns:ArrayOfProposalInfo" />
+  <xs:complexType name="MessageInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProposalId" type="xs:int" />
+      <xs:element minOccurs="0" name="ToUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageInfo" nillable="true" type="tns:MessageInfo" />
+  <xs:complexType name="ArrayOfMessageInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageInfo" nillable="true" type="tns:MessageInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessageInfo" nillable="true" type="tns:ArrayOfMessageInfo" />
+  <xs:complexType name="ArrayOfAppointmentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppointmentInfo" nillable="true" type="tns:AppointmentInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppointmentInfo" nillable="true" type="tns:ArrayOfAppointmentInfo" />
+  <xs:complexType name="AppointmentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AppointmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="AproxDuration" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ClientId" type="xs:int" />
+      <xs:element minOccurs="0" name="ContractorId" type="xs:int" />
+      <xs:element minOccurs="0" name="JobId" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationCoordX" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LocationCoordY" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MeetingTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProposalId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StatusId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppointmentInfo" nillable="true" type="tns:AppointmentInfo" />
+  <xs:complexType name="TaskInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="StatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="TaskId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskInfo" nillable="true" type="tns:TaskInfo" />
+  <xs:complexType name="ArrayOfTaskInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaskInfo" nillable="true" type="tns:TaskInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaskInfo" nillable="true" type="tns:ArrayOfTaskInfo" />
+  <xs:complexType name="ArrayOfRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rate" nillable="true" type="tns:Rate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRate" nillable="true" type="tns:ArrayOfRate" />
+  <xs:complexType name="Rate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rating" type="xs:float" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rate" nillable="true" type="tns:Rate" />
+</xs:schema>

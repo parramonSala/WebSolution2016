@@ -1,0 +1,96 @@
+﻿@model MvcContractorShareApplication.Models.SearchJobModel
+@{
+    ViewBag.Title = "FindJobs";
+}
+
+@Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Search Jobs</h2>
+    </div>
+    }
+
+<br />
+<div class="container">
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="row">
+
+    <div class="form-horizontal">
+         <div class="col-xs-3">
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", @placeholder = "Postal Code" })
+        </div>
+        <div class="col-xs-3">
+
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+        </div>
+        <div class="col-xs-3">
+
+             @Html.DropDownListFor(m => m.CategoryId,
+                                         new SelectList(Model.Categories,
+                                        "CategoryId", "Value",
+                                        Model.Categories.First().CategoryId))
+
+        </div>
+        <div class="col-xs-2">
+
+           <input type="submit" value="Search" class="btn btn-primary btn-block btn-default">
+
+        </div>
+    </div>
+</div>
+}
+     <br />
+
+<table class="table table-striped" id="myjobstable">
+
+@foreach (var item in Model.Jobs) {
+    
+    <tr>
+        <td width="15%"><b>
+          @Html.ActionLink(item.JobName, "DetailsJob", "Home", new { Id = item.JobId }, null /* html attributes */)
+
+        </b>
+        <br />
+        @Html.DisplayFor(modelItem => item.StatusName)
+        <br />
+        Posted on  @Html.DisplayFor(modelItem => item.Posted)
+        </td>
+        <td>
+        </td>
+        <td width="10%">
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td width="50%">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td width="15%">
+            @Html.DisplayFor(modelItem => item.Address)
+            <br />
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td width="10%">
+            <div class="btn-group">
+								<button class="btn btn-sm btn-primary">Action</button>
+								<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href='@Url.Action("DetailsJob", "Home", new { id=item.JobId })'><i class="fa fa-folder-open-o"></i>View</a></li>
+                                    
+                                    <li><a href='@Url.Action("CreateNewProposal", "Proposal", new { id=item.JobId })'><i class="fa fa-pencil"></i>Create Proposal</a></li>                                
+                                </ul>
+							</div>
+        </td>
+    </tr>
+    
+}
+</table>
+
+</div>

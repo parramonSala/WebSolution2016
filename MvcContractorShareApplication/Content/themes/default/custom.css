@@ -1,0 +1,54 @@
+    /* customised
+    ----------------------------------------------------------*/
+    /*Index
+    .navbar-inverse { background-color: #337ab7 !important; 
+    }*/
+
+    #profile
+    {
+       font-size:16px;
+    }
+
+    /*RegisterMain*/
+    #RegisterMain {
+        font-family: Verdana;  
+    }
+
+    #RegisterMainJoinUs {
+        font-size: 18pt;
+    }
+
+    #RegisterMainSmall {
+        font-size: 10pt;
+    }
+
+    /*PostNewJob*/
+
+    .jumbotron-special{
+    height: 150px;
+    padding:0px;
+    }
+
+    #description{
+        height:200px;
+        vertical-align:top;
+    }
+
+    /*My Jobs*/
+
+    .jumbotron-special-short{
+    height: 60px;
+    padding:0px;
+    }
+
+
+    /*Change Password*/
+    #RemoveListnumber {
+    list-style: none;
+    }
+
+    /*Create Proposal*/
+    #message{
+        height:150px;
+        vertical-align:top;
+    }

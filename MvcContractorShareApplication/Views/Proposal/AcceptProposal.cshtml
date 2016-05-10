@@ -1,0 +1,84 @@
+﻿@model MvcContractorShareApplication.Models.AcceptProposalModel
+@{
+    ViewBag.Title = "AcceptProposal";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Accept Proposal</h2>
+    </div>
+    }
+
+<hr>
+<div class="container">
+	<div class="row">
+  		<div class="col-sm-10"><h4>Proposal for @Html.DisplayFor(model => model.JobName)</h4></div>
+        <br />
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+          <ul class="list-group">
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Status</strong></span> @Html.DisplayFor(model => model.StatusName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Created By</strong></span> @Html.DisplayFor(model => model.FromUserName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>To </strong></span> @Html.DisplayFor(model => model.FromUserName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Created</strong></span>@Html.DisplayFor(model => model.Created)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Location</strong></span> 
+                @Html.DisplayFor(model => model.Address) <br />
+                @Html.DisplayFor(model => model.City) <br />
+            </li>
+          </ul> 
+               
+          
+          
+          
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+          
+          <div class="tab-content">          
+                <div class="tab-pane active" id="home">
+                <hr>
+                <div class="row">
+                     <div class="col-sm-10"><h5><b>Do you want to accept this proposal?</b></h5>
+                         If you are happy with the proposed time and the estimated duration and price, please accept the proposal
+                         and a new appointment will be scheduled for your and your selected professional.
+                         <br /><br />
+
+                         <div class="col-sm-10"><strong>Approx Duration: </strong>@Html.DisplayFor(model => model.AproxDuration)</div>
+                         <div class="col-sm-10"><strong>Proposed Time: </strong>@Html.DisplayFor(model => model.ProposedTime)</div>
+                         <div class="col-sm-10"><strong>Proposed Price: </strong>@Html.DisplayFor(model => model.ProposedPrice)</div>
+                         
+
+                          @using (Html.BeginForm()) {
+                             @Html.AntiForgeryToken()
+                              <!--  Hidden field -->
+                             @Html.HiddenFor(m => m.ProposalId, new { @class = "form-control" })
+
+                            <p>
+                                <div class="row">
+                                        <div class="col-xs-7 col-md-5">
+                                            <br />
+                                            <input type="submit" value="Yes, Accept this Proposal" class="btn btn-primary btn-block btn-default" tabindex="7">
+                                        </div>
+                                 </div>
+                            </p>
+                        }
+                      </div>
+                  	
+                    <ul class="pagination" id="myPager"></ul>          
+                  </div><!--/table-resp-->    
+
+              <hr>
+              
+             </div><!--/tab-pane-->
+             
+             
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->

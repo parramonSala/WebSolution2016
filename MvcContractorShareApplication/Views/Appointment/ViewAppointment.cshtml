@@ -1,0 +1,59 @@
+﻿@model MvcContractorShareApplication.Models.ViewAppointmentModel
+@{
+    ViewBag.Title = "ViewAppointment";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">View Appointment</h2>
+    </div>
+    }
+
+<hr>
+<div class="container">
+	<div class="row">
+  		<div class="col-sm-10"><h4>Appointment for job @Html.DisplayFor(model => model.JobName)</h4></div>
+        <br />
+        <p>
+            <div class="btn-group">
+                <button class="btn btn-sm btn-primary">Action</button>
+			    <button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+                    @if(Model.StatusName == "Open")
+                    {
+                        <li><a href='@Url.Action("CancelAppointment", "Appointment", new { id=Model.AppointmentId })'><i class="fa fa-reply"></i> Cancel</a></li>
+                    }
+                    <li><a href='@Url.Action("ViewProposal", "Proposal", new { id=Model.ProposalId })'><i class="fa fa-folder-open-o"></i> View Proposal</a></li>                                
+                </ul>
+            </div>
+        </p>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+          <ul class="list-group">
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Status</strong></span> @Html.DisplayFor(model => model.StatusName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Client</strong></span> @Html.DisplayFor(model => model.ClientName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Contractor </strong></span> @Html.DisplayFor(model => model.ContractorName)</li>
+          </ul> 
+                         
+        </div>
+
+    	<div class="col-sm-9">
+          
+                <div class="row">
+                       <div class="col-sm-10"><strong>Meeting Time: </strong>@Html.DisplayFor(model => model.MeetingTime)</div>
+                       <div class="col-sm-10"><strong>Approx Duration: </strong>@Html.DisplayFor(model => model.AproxDuration)</div>
+                      <div class="col-sm-10"><strong>Address: </strong></div>
+                      <div class="col-sm-10">@Html.DisplayFor(model => model.Address)</div>
+                      <div class="col-sm-10">@Html.DisplayFor(model => model.City)</div>
+                </div>
+
+         </div><!--/tab-content-->
+
+        </div>
+    </div>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "RegisterMain";
+}
+
+    @Html.Partial("_NavBar")
+
+
+@section featured {
+
+
+<div class="jumbotron">
+    <div class ="container">
+<div class="container user-type-page ng-scope" id="RegisterMain">
+        <div class="row m-lg-top m-xlg-bottom">
+            <div class="col-md-12 m-lg-bottom">
+                <hgroup class="text-center">
+                    <h3 class="m-xs-top-bottom" id="RegisterMainJoinUs">Join us</h3>
+                </hgroup>
+            </div>
+
+            <div class="m-lg-bottom hidden-xs">&nbsp;</div>
+            <div class="p-md-bottom visible-xs">&nbsp;</div>
+
+            <div class="col-md-12 text-center">
+                <div class="col-md-5">
+                    <div class="text-muted">
+                        <div class="o-user-type-selection">
+                            Join as a client</div>
+                    </div>
+                    <p class="fs-sm m-lg-bottom" id="RegisterMainSmall">
+                        <br />Create service requests and
+                        <br>find the best contractors near you
+                    </p>
+
+                    <a class="btn btn-primary text-capitalize" href="/Account/Register">Register as a Client</a>
+                </div>
+
+                <div class="col-md-2"></div>
+
+                <div class="col-md-5">
+                    <div class="text-muted">
+                        <div><i class="glyphicon-xlg air-icon-freelancer"></i></div>
+                        <div class="o-user-type-selection">Join as a contractor</div>
+                    </div>
+                    <p class="fs-sm m-lg-bottom" style="font-size:10pt">
+                        <br />Find jobs and
+                        <br>
+                        make people know your business.
+                    </p>
+                    <a class="btn btn-primary text-capitalize" href="/Account/RegisterContractor">Register as a Contractor</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+}
+

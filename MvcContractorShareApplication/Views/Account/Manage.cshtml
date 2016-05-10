@@ -1,0 +1,41 @@
+﻿@model MvcContractorShareApplication.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+@Html.Partial("_NavBar")
+
+@section featured {
+    <div class="jumbotron jumbotron-special-short">
+            <div class="container" >
+                <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Manage Account</h2>
+        </div>
+    </div>
+}
+
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#settings" data-toggle="pill"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+    <li><a href="#changepassword" data-toggle="pill"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+  </ul>
+</div>
+
+<div class="col-md-9">
+    <div class="tab-content">
+      <div id="settings" class="tab-pane fade in active">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+            @Html.Action("ChangeUserPreferences")
+      </div>
+      <div id="changepassword" class="tab-pane fade">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+            @Html.Partial("_ChangePasswordPartial")
+            
+      </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

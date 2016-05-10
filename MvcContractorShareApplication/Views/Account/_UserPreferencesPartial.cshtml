@@ -1,0 +1,35 @@
+﻿@model MvcContractorShareApplication.Models.UserPreferences
+
+@using (Html.BeginForm("Manage", "Account")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <h2>User Settings</h2>
+                    <div class="col-md-6">
+		                <form role="form">
+                    <fieldset>
+        
+                        <div class="form-group">
+                             <!--  Hidden fields -->
+                                                    @Html.HiddenFor(m => m.preferencestab, new { @class = "form-control" })
+                                 <br />
+                                @Html.CheckBoxFor(m => m.shareLocation) <label>I want to share my address</label>
+                                <br />
+
+                                @Html.CheckBoxFor(m => m.showContactNumber) <label>I want to share my contact numbers</label>
+                                <br />
+                
+                                @Html.CheckBoxFor(m => m.showContactEmail) <label>I want to share my email</label>
+                                <br />
+
+                                @Html.CheckBoxFor(m => m.enableNotifications) <label>Enable mobile notifications</label>
+
+                           </div> 
+                        </fieldset>
+		                </form>        
+
+            <div class="col-md-6">
+                <input type="submit" value="Submit changes" class="btn btn-primary btn-block btn-default">
+            </div>
+            </div>
+}

@@ -1,0 +1,377 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MvcContractorShareApplication.Models;
+using System.Web.UI.HtmlControls;
+using System.IO;
+using MvcContractorShareApplication.Enumerations;
+
+
+namespace MvcContractorShareApplication.Controllers
+{
+    public class UserController : Controller
+    {
+        ContractorShareServiceReference.ContractorShareClient ContractorShareService = new ContractorShareServiceReference.ContractorShareClient();
+        ContractorShareServiceReference.UserInfo UserInfo = new ContractorShareServiceReference.UserInfo();
+        ContractorShareServiceReference.UserFavourite UserFavourite = new ContractorShareServiceReference.UserFavourite();
+        protected HtmlInputFile myFile;
+
+
+        public ActionResult MyClientProfile()
+        {
+            var myprofile = ContractorShareService.GetUserProfile(Session["userId"].ToString());
+
+            ViewClientModel model = new ViewClientModel();
+
+            model.userId = (int)Session["userId"];
+            model.Name = string.Concat(myprofile.Firstname, " ", myprofile.Surname);
+            model.Address = myprofile.Address;
+            model.City = string.Concat(myprofile.City, ", ", myprofile.Country);
+            model.Email = myprofile.Email;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+
+            return View(model);
+        }
+
+        public ActionResult EditClientProfile(int id)
+        {
+            var myprofile = ContractorShareService.GetUserProfile(id.ToString());
+
+            Client model = new Client();
+
+            model.userId = id;
+            model.Firstname = myprofile.Firstname;
+            model.Surname = myprofile.Surname;
+            model.Address = myprofile.Address;
+            model.City = myprofile.City;
+            model.Email = myprofile.Email;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditClientProfile(Client viewModel, HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                //File upload to be done
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = System.IO.Path.GetFileName(upload.FileName);
+                    var ContentType = upload.ContentType;
+                }
+
+                UserInfo.Email = viewModel.Email;
+                UserInfo.Firstname = viewModel.Firstname;
+                UserInfo.Surname = viewModel.Surname;
+                UserInfo.PhoneNumber = Convert.ToInt64(viewModel.PhoneNumber);
+                UserInfo.MobileNumber = Convert.ToInt64(viewModel.MobileNumber);
+                UserInfo.Address = viewModel.Address;
+                UserInfo.PostalCode = viewModel.PostalCode;
+                UserInfo.City = viewModel.City;
+                UserInfo.Country = viewModel.Country;
+                UserInfo.Categories = new List<int>().ToArray();
+                UserInfo.CompanyCoordX = 0;
+                UserInfo.CompanyCoordY = 0;
+                UserInfo.CompanyName = null;
+                UserInfo.Description = null;
+                UserInfo.PricePerHour = null;
+                UserInfo.website = null;
+
+                string result = ContractorShareService.EditUserProfile(viewModel.userId.ToString(), UserInfo);
+
+                if (result == "OK")
+                {
+                    return RedirectToAction("MyClientProfile", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result);
+                    return View(viewModel);
+                }
+            }
+            ModelState.AddModelError("", "Some of the data entered is incorrect. Please try again");
+            return View(viewModel);
+        }
+
+        public ActionResult MyContractorProfile()
+        {
+            int userid = Convert.ToInt32(Session["userId"]);
+
+            return RedirectToAction("ContractorProfile", new
+                    {
+                        id = userid
+                    });
+        }
+
+        public ActionResult ContractorProfile(int id)
+        {
+            var myprofile = ContractorShareService.GetUserProfile(id.ToString());
+
+            var fromuser = Session["userId"].ToString();
+            var userisfavourite = ContractorShareService.UserIsFavourite(fromuser, id.ToString());
+            var userisblocked = ContractorShareService.UserIsBlocked(fromuser, id.ToString());
+
+            ViewContractorModel model = new ViewContractorModel();
+
+            model.userId = id;
+            model.CompanyName = myprofile.CompanyName;
+            model.Address = myprofile.Address;
+            model.City = string.Concat(myprofile.City, ", ", myprofile.Country);
+            model.Email = myprofile.Email;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+
+            //list of categories
+            model.Categories = new List<string>();
+
+            foreach (var category in myprofile.Categories.ToList())
+            {
+                ServiceCategoryEnum categoryenum = (ServiceCategoryEnum)category;
+                string categoryname = EnumHelper.GetDescription(categoryenum);
+                model.Categories.Add(categoryname);
+            }
+
+            model.CompanyCoordX = myprofile.CompanyCoordX;
+            model.CompanyCoordY = myprofile.CompanyCoordY;
+            model.mapsource = string.Concat("http://maps.google.com/maps?z=12&t=m&q=loc:", model.CompanyCoordX, "+", model.CompanyCoordY, "&output=embed");
+            model.Description = myprofile.Description;
+            model.PricePerHour = myprofile.PricePerHour;
+            model.website = myprofile.website;
+            model.AverageRate = myprofile.AverageRate;
+            model.NumOfRates = myprofile.NumOfRates;
+            model.IsFavourite = userisfavourite;
+            model.IsBlocked = userisblocked;
+
+            return View(model);
+        }
+
+        public ActionResult EditContractorProfile(int id)
+        {
+            var myprofile = ContractorShareService.GetUserProfile(id.ToString());
+
+            Contractor model = new Contractor();
+
+            model.userId = id;
+            model.CompanyName = myprofile.CompanyName;
+            model.Email = myprofile.Email;
+            model.Address = myprofile.Address;
+            model.City = myprofile.City;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+            model.website = myprofile.website;
+            model.PricePerHour = myprofile.PricePerHour;
+            model.Description = myprofile.Description;
+
+            //selected categories
+            model.selectedCategories = myprofile.Categories;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditContractorProfile(Contractor EditContractorModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                UserInfo.Email = EditContractorModel.Email;
+                UserInfo.CompanyName = EditContractorModel.CompanyName;
+                UserInfo.PhoneNumber = Convert.ToInt64(EditContractorModel.PhoneNumber);
+                UserInfo.MobileNumber = Convert.ToInt64(EditContractorModel.MobileNumber);
+                UserInfo.Address = EditContractorModel.Address;
+                UserInfo.PostalCode = EditContractorModel.PostalCode;
+                UserInfo.City = EditContractorModel.City;
+                UserInfo.Country = EditContractorModel.Country;
+                UserInfo.website = EditContractorModel.website;
+                UserInfo.PricePerHour = EditContractorModel.PricePerHour;
+                UserInfo.Description = EditContractorModel.Description;
+
+                UserInfo.Categories = EditContractorModel.selectedCategories;
+
+                UserInfo.CompanyCoordX = 0;
+                UserInfo.CompanyCoordY = 0;
+
+                UserInfo.Firstname = null;
+                UserInfo.Surname = null;
+
+                string result = ContractorShareService.EditUserProfile(EditContractorModel.userId.ToString(), UserInfo);
+
+                if (result == "OK")
+                {
+                    return RedirectToAction("MyContractorProfile", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result);
+                    return View(EditContractorModel);
+                }
+            }
+            ModelState.AddModelError("", "Some of the data entered is incorrect. Please try again");
+            return View(EditContractorModel);
+        }
+
+        public ActionResult ContractorSearch()
+        {
+            SearchContractorModel model = new SearchContractorModel();
+            model.Contractors = new List<Contractor>();
+
+            var userprofile = ContractorShareService.GetUserProfile(Session["userId"].ToString());
+
+            model.City = userprofile.City;
+            model.PostalCode = userprofile.PostalCode.Substring(0, 2);
+            model.PricePerHour = 0;
+            model.CategoryId = 0;
+
+            var contractorlist = ContractorShareService.SearchContractors(model.CategoryId, model.City, model.PostalCode, model.PricePerHour);
+
+            foreach (var s in contractorlist)
+            {
+                Contractor contractor = new Contractor();
+                contractor.CompanyName = s.CompanyName;
+                contractor.Address = s.Address;
+                contractor.PostalCode = s.PostalCode;
+                contractor.City = s.City;
+
+                //list of categories
+                contractor.CategoriesList = new List<string>();
+
+                foreach (var category in s.Categories.ToList())
+                {
+                    ServiceCategoryEnum categoryenum = (ServiceCategoryEnum)category;
+                    string categoryname = EnumHelper.GetDescription(categoryenum);
+                    contractor.CategoriesList.Add(categoryname);
+                }
+
+                contractor.PricePerHour = s.PricePerHour;
+                contractor.AverageRate = s.AverageRate;
+
+                model.Contractors.Add(contractor);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ContractorSearch(SearchContractorModel model)
+        {
+            var contractorlist = ContractorShareService.SearchContractors(model.CategoryId, model.City, model.PostalCode, model.PricePerHour);
+
+            model.Contractors = new List<Contractor>();
+
+            foreach (var s in contractorlist)
+            {
+                Contractor contractor = new Contractor();
+                contractor.userId = s.ID;
+                contractor.CompanyName = s.CompanyName;
+                contractor.Address = s.Address;
+                contractor.PostalCode = s.PostalCode;
+                contractor.City = s.City;
+
+                //list of categories
+                contractor.CategoriesList = new List<string>();
+
+                foreach (var category in s.Categories.ToList())
+                {
+                    ServiceCategoryEnum categoryenum = (ServiceCategoryEnum)category;
+                    string categoryname = EnumHelper.GetDescription(categoryenum);
+                    contractor.CategoriesList.Add(categoryname);
+                }
+
+                contractor.PricePerHour = s.PricePerHour;
+                contractor.AverageRate = s.AverageRate;
+
+                model.Contractors.Add(contractor);
+            }
+
+            return View(model);
+        }
+
+        public ActionResult AddFavourite(int id)
+        {
+            string fromuser = Session["userId"].ToString();
+
+            var result = ContractorShareService.AddFavourite(fromuser, id);
+            
+            return RedirectToAction("ContractorProfile", new
+            {
+                id = id
+            });   
+        }
+
+        public ActionResult RemoveFavourite(int id)
+        {
+            string fromuser = Session["userId"].ToString();
+
+            var result = ContractorShareService.RemoveFavourite(fromuser, id.ToString());
+
+            return RedirectToAction("ContractorProfile", new
+            {
+                id = id
+            });
+        }
+
+        public ActionResult BlockUser(int id)
+        {
+            string fromuser = Session["userId"].ToString();
+
+            var result = ContractorShareService.BlockUser(fromuser, id);
+
+            return RedirectToAction("ContractorProfile", new
+            {
+                id = id
+            });
+        }
+
+        public ActionResult DenounceUser(int id)
+        {
+            DenounceUserModel model = new DenounceUserModel();
+
+            var userprofile = ContractorShareService.GetUserProfile(id.ToString());
+
+            model.ToUserId = id;
+            model.ToUserName = string.IsNullOrEmpty(userprofile.CompanyName) ? string.Concat(userprofile.Firstname, " ", userprofile.Surname) : userprofile.CompanyName;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult DenounceUser(DenounceUserModel model)
+        {
+            string fromuser = Session["userId"].ToString();
+            var result = ContractorShareService.AddDenunce(fromuser, model.ToUserId, model.Comment, false);
+
+            if (result=="OK")
+            {
+                return RedirectToAction("ContractorProfile", new
+                {
+                    id = model.ToUserId
+                });
+            }
+
+            return View(model);
+        }
+
+    }
+}

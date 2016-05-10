@@ -1,0 +1,298 @@
+﻿@model MvcContractorShareApplication.Models.ViewJob
+@{
+    ViewBag.Title = "DetailsJob";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">View Job</h2>
+    </div>
+    }
+
+<hr>
+<div class="container">
+	<div class="row">
+  		<div class="col-sm-10"><h3>@Html.DisplayFor(model => model.JobName)</h3></div>
+        <br />
+        <p>
+            <div class="btn-group">
+                @* Client == usertype 1
+                   Contractor == usertype 2
+                *@
+
+                @if (Convert.ToInt32(Session["usertype"]) == 1)
+                {
+                    <button class="btn btn-sm btn-primary">Action</button>
+								<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href='@Url.Action("EditJob", "Home", new { id=Model.JobId })'><i class="fa fa-edit"></i>Edit</a></li>
+                                    
+                                    <li><a href='@Url.Action("CancelJob", "Home", new { id=Model.JobId })'><i class="fa fa-close"></i>Cancel</a></li>      
+                                    
+                                </ul>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-primary">Action</button>
+                    <button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href='@Url.Action("CreateNewProposal", "Proposal", new { id=Model.JobId })'><i class="fa fa-pencil"></i> Create Proposal</a></li>
+                                    
+                                    @if (Model.ContractorId== Convert.ToInt32(Session["userId"]))
+                                    {
+  									    <li><a href='@Url.Action("CreateTask", new { id=Model.JobId })'><i class="fa fa-tasks"></i> Add Task</a></li>
+
+                                        @*If the Job Status is Inprogress (2), allow contractor to complete the job *@
+                                        if (Model.StatusId == 2)
+                                        {
+   									        <li><a href='@Url.Action("CompleteJob", new { id=Model.JobId })'><i class="fa fa-check-square-o"></i> Complete Job</a></li>
+                                        }
+                                    }
+                                </ul>
+				}				
+			    </div>
+        </p>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+          <ul class="list-group">
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Status</strong></span> @Html.DisplayFor(model => model.StatusName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Category</strong></span> @Html.DisplayFor(model => model.CategoryName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Posted</strong></span>@Html.DisplayFor(model => model.Posted)</li>
+
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Location</strong></span> 
+                @Html.DisplayFor(model => model.Address) <br />
+                @Html.DisplayFor(model => model.PostalCode) <br />
+                @Html.DisplayFor(model => model.City) <br />
+                @Html.DisplayFor(model => model.Country)
+            </li>
+          </ul> 
+               
+          <div class="panel panel-default">
+            <div class="panel-heading">Proposals <i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body"><a>2</a></div>
+          </div>
+          
+          
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+          
+          <ul class="nav nav-tabs" id="myTab">
+            <li><a href="#home" data-toggle="tab">Job</a></li>
+            <li><a href="#messages" data-toggle="tab">Comments</a></li>
+            <li><a href="#tasks" data-toggle="tab">Tasks</a></li>
+          </ul>
+              
+          <div class="tab-content">
+            <div class="tab-pane" id="home">
+                <hr>
+                <div class="row">
+                     <div class="col-sm-10"><h4>Job Description</h4></div>
+                     <div class="col-sm-10">@Html.DisplayFor(model => model.Description)</div>
+
+
+                  	<ul class="pagination" id="myPager"></ul>
+              </div><!--/table-resp-->
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+            <div class="tab-pane" id="messages">
+                <ul class="list-group">  
+                    <div class="well">
+                        @using (Html.BeginForm()) {
+                        @Html.AntiForgeryToken()
+
+                            <form role="form">
+                            <fieldset>
+
+                            <div class="form-group">
+
+                                     <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+                                    
+                                    @Html.TextAreaFor(m => m.message, new { @class = "form-control", id="smallmessage"})
+                                    @Html.ValidationMessageFor(m => m.message,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="submit" value="Send Comment" class="btn btn-primary btn-block btn-xs" tabindex="7">                     
+                                        </div>
+                                    </div>
+                            </div>  
+                            </fieldset>
+		                    </form>
+                        }
+
+                        <hr data-brackets-id="12673">
+                        <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+                        
+                           @foreach (var item in Model.Comments) {
+                                <!--  Hidden fields -->
+                                    @Html.HiddenFor(model => item.CommentId, new { @class = "form-control" })
+                                <!-- End Hidden fields -->
+                               <strong class="pull-left primary-font">@Html.DisplayFor(model => item.CreatedByUserName)</strong>
+                               <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => item.Created)    
+                                    @if ((Session["userId"]).ToString() == item.CreatedByUserId.ToString())
+                                     {
+                                        <a role="button" class="close" aria-hidden="true" data-toggle="modal" data-target="#@item.CommentId">&times;</a>
+                                     }
+                                </small>
+                               
+                                <!-- Modal HTML -->
+                               <div class="modal fade" id="@item.CommentId" tabindex="-1" role="dialog"  aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h3 class="modal-title">Confirmation</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this comment?</p>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                     <!--  Hidden fields -->
+                                                    @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+
+                                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                
+                                                    @Html.ActionLink(
+                                                        "Delete", 
+                                                        "DeleteComment", 
+                                                        "Home", 
+                                                        new { id = item.CommentId, jobid = item.JobId }, 
+                                                        new { @class = "btn btn-primary"})
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <br />
+                                <li class="ui-state-default">>@Html.DisplayFor(model => item.comment)</li>
+                                <br />
+                           }
+
+                        </ul>
+                </div>
+
+               </ul> 
+
+
+
+             </div><!--/tab-pane-->
+            <div class="tab-pane" id="tasks">
+                  <table class="table table-striped" id="myjobstable">
+                           @foreach (var item in Model.Tasks) {
+                                <!--  Hidden fields -->
+                                    @Html.HiddenFor(model => item.TaskId, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => item.JobId, new { @class = "form-control" })
+                                <!-- End Hidden fields -->
+                               <tr>
+                                <td width="25%">
+                                    <b>
+                                    @Html.ActionLink(item.Name, "ViewTask", "Home", new { id = item.TaskId, jobid = item.JobId }, null /* html attributes */)
+                                    </b>
+                                    <br />
+                                     @Html.DisplayFor(modelItem => item.StatusName)
+                                    <br />
+                                     @Html.DisplayFor(modelItem => item.CreatedOn)
+                                </td>
+                                <td width="60%">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td width="15%">
+                                    <div class="btn-group">
+								                        <button class="btn btn-sm btn-primary">Action</button>
+								                        <button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								                        <ul class="dropdown-menu">
+
+                                                            <li><a href='@Url.Action("ViewTask", new { id = item.TaskId, jobid = item.JobId })'><i class="fa fa-folder-open-o"></i>  View</a></li>
+                                                            
+                                                            @* Client == usertype 1
+                                                               Contractor == usertype 2
+
+                                                               Only Contractors can Edit and Delete tasks
+                                                            *@
+
+                                                            @if (Convert.ToInt32(Session["usertype"]) == 2)
+                                                            {
+                                                                <li><a href='@Url.Action("EditTask", new { id = item.TaskId, jobid = item.JobId })'><i class="fa fa-edit"></i>  Edit</a></li>
+                                                                <li><a href='@Url.Action("ChangeTaskStatus", new { id = item.TaskId, jobid = item.JobId })'><i class="fa fa-pencil"></i>  Change Task Status</a></li>									                            
+                                                                <li><a href='@Url.Action("DeleteTask", new { id=item.TaskId })' id="deletetask" data-toggle="modal" data-target="#@item.TaskId"><i class="fa fa-close"></i>  Delete</a></li>
+                                                            }
+
+                                                        </ul>
+                                                        
+                                                        <!-- Modal HTML -->
+                                                           <div class="modal fade" id="@item.TaskId" tabindex="-1" role="dialog"  aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                            <h3 class="modal-title">Confirmation</h3>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Are you sure you want to delete this task?</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+
+                                                                                 <!--  Hidden fields -->
+                                                                                @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+
+                                                                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                
+                                                                                @Html.ActionLink(
+                                                                                    "Delete", 
+                                                                                    "DeleteTask", 
+                                                                                    "Home", 
+                                                                                    new { id = item.TaskId, jobid = item.JobId }, 
+                                                                                    new { @class = "btn btn-primary"})
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+							                        </div>
+                                </td>
+                            </tr>
+                               
+                                
+                           }
+
+                        </table>
+            </div>
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+
+
+
+    </div>
+
+
+@{
+    string activeTab = ViewBag.Active.ToString(); 
+}
+
+@section scripts{
+ 
+    <script>
+        $(function () {
+            var selector = '@activeTab';
+            $("#" + selector).addClass("active");
+        });
+    </script>
+}

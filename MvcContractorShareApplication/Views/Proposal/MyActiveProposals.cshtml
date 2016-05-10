@@ -1,0 +1,112 @@
+﻿@model IEnumerable<MvcContractorShareApplication.Models.ViewProposalModel>
+
+@{
+    ViewBag.Title = "MyActiveProposals";
+}
+
+
+    <br />
+
+  <table class="table table-striped" id="myproposalstable">
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td width="20%"><b>
+        @Html.ActionLink(item.JobName, "ViewProposal", "Proposal", new { Id = item.ProposalId }, null /* html attributes */)
+        </b>
+        <br />
+        Created By @Html.DisplayFor(modelItem => item.FromUserName)
+        <br />
+        To @Html.DisplayFor(modelItem => item.ToUserName)
+        <br />
+        @Html.DisplayFor(modelItem => item.StatusName)
+        <br />
+        <span class="TitleEstTimeClass" style="color: green; font-weight:bold">
+           @Html.DisplayFor(modelItem => item.ScreenMessage)
+        </span>
+        </td>
+    
+        <td width="40%">
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td width="10%">
+            @Html.DisplayFor(modelItem => item.ProposedPrice)
+        </td>
+        <td width="15%">
+            @Html.DisplayFor(modelItem => item.Address)
+            <br />
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td width="15%">
+
+
+        @* If usertype is 1 (Client), he can Accept/Reject/Reply
+           If usertype is 2 (Contractor), he can Reject/Edit/Reply *@
+
+        @if (Convert.ToInt32(Session["usertype"]) == 1)
+        {
+            <div class="btn-group">
+								<button class="btn btn-sm btn-primary">Action</button>
+								<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+                                    
+									<li><a href='@Url.Action("ViewProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-folder-open"></i> View</a></li>
+
+                                    @* If accepted, it can't be Accepted again, Replied or Rejected *@
+
+                                    @if (item.StatusName != "Accepted")
+                                    {
+                                        <li><a href='@Url.Action("AcceptProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-thumbs-o-up"></i> Accept</a></li>
+
+                                        <li><a href='@Url.Action("ReplyProposal",new { id=item.ProposalId })'><i class="fa fa-reply"></i> Reply</a></li>
+
+                                        <li><a href='@Url.Action("RejectProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-thumbs-o-down"></i> Reject</a></li>
+
+                                    }
+                                    @if ((Session["userId"]).ToString() == item.FromUserId.ToString())
+                                    {
+                                        <li><a href='@Url.Action("CancelProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-close"></i> Cancel</a></li>                                
+                                
+                                    }
+
+                                    <li><a href='@Url.Action("DetailsJob", "Home", new { id=item.JobId })'><i class="fa fa-folder-open-o"></i> View Job</a></li>                                
+                                
+                                    
+                                </ul>
+			</div>
+        }
+        else
+        {
+            <div class="btn-group">
+								<button class="btn btn-sm btn-primary">Action</button>
+								<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href='@Url.Action("ViewProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-folder-open"></i> View</a></li>
+                                    
+                                    @* If accepted, it can't be Edited, Replied or Rejected *@
+
+                                    @if (item.StatusName != "Accepted")
+                                    {
+                                        <li><a href='@Url.Action("EditProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-edit"></i> Edit</a></li>
+
+                                        <li><a href='@Url.Action("ReplyProposal",new { id=item.ProposalId })'><i class="fa fa-reply"></i> Reply</a></li>
+
+                                        <li><a href='@Url.Action("RejectProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-thumbs-o-down"></i> Reject</a></li>
+                                    }
+
+                                    @if ((Session["userId"]).ToString() == item.FromUserId.ToString())
+                                    {
+                                        <li><a href='@Url.Action("CancelProposal", "Proposal", new { id=item.ProposalId })'><i class="fa fa-close"></i> Cancel</a></li>                                
+                                
+                                    }
+
+                                    <li><a href='@Url.Action("DetailsJob", "Home", new { id=item.JobId })'><i class="fa fa-folder-open-o"></i> View Job</a></li>                                
+                                </ul>
+			</div>
+        }
+        </td>
+    </tr>
+    
+}
+</table>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvcContractorShareApplication.Models.ViewAppointmentModel>
+
+@{
+    ViewBag.Title = "MyClosedAppointments";
+}
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Closed Appointments</h2>
+    </div>
+    }
+
+    <br />
+
+  <table class="table table-striped" id="myproposalstable">
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td width="20%"><b>
+        @Html.ActionLink(item.JobName, "ViewAppointment", "Appointment", new { Id = item.AppointmentId }, null /* html attributes */)
+        </b>
+        <br />
+        <strong>Status:</strong> @Html.DisplayFor(modelItem => item.StatusName)
+        <br />
+        <strong>Client:</strong> @Html.DisplayFor(modelItem => item.ClientName)
+        <br />
+        <strong>Professional: </strong>@Html.DisplayFor(modelItem => item.ContractorName)
+        </td>
+
+        <td width="10%">
+            <strong>Meeting time</strong>
+            <br />
+            @Html.DisplayFor(modelItem => item.MeetingTime)
+        </td>
+    
+        <td width="10%">
+            <strong>Aprox Duration</strong>
+            <br />
+            @Html.DisplayFor(modelItem => item.AproxDuration)
+        </td>
+        <td width="15%">
+            <strong>Location</strong>
+            <br />
+            @Html.DisplayFor(modelItem => item.Address)
+            <br />
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td width="15%">
+
+        <div class="btn-group">
+			<button class="btn btn-sm btn-primary">Action</button>
+			<button class="btn btn-sm dropdown-toggle btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a href='@Url.Action("ViewAppointment", "Appointment", new { id=item.AppointmentId })'><i class="fa fa-folder-open"></i> View</a></li>
+
+                <li><a href='@Url.Action("ViewProposal", "Proposal", new { id=item.JobId })'><i class="fa fa-folder-open-o"></i> View Proposal</a></li>                                
+            </ul>
+		</div>
+        
+        </td>
+    </tr>
+    
+}
+</table>
+
+        @Html.ActionLink("View my active appointments","MyActiveAppointments", "Appointment")

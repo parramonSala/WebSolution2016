@@ -1,0 +1,43 @@
+﻿@model MvcContractorShareApplication.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Proposals";
+}
+@Html.Partial("_NavBar")
+
+@section featured {
+    <div class="jumbotron jumbotron-special-short">
+            <div class="container" >
+                <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Proposals</h2>
+        </div>
+    </div>
+}
+
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#activeproposals" data-toggle="pill">Active Proposals</a></li>
+    <li><a href="#closedproposals" data-toggle="pill">Closed Proposals</a></li>
+  </ul>
+</div>
+
+<div class="col-md-9">
+    <div class="tab-content">
+        <div id="activeproposals" class="tab-pane fade in active">
+            <h4>Current Received Proposals</h4>
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+            @Html.Action("LoadMyActiveProposals")
+            
+      </div>
+      <div id="closedproposals" class="tab-pane fade">
+           <h4>Closed Proposals</h4>
+          <p class="message-success">@ViewBag.StatusMessage</p>
+            
+            @Html.Action("LoadMyClosedProposals")
+      </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

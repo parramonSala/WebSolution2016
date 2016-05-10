@@ -1,0 +1,94 @@
+﻿
+@model MvcContractorShareApplication.Models.NewJobModel
+@{
+    ViewBag.Title = "PostNewJob";
+}
+
+    @Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Post a Job</h2>
+            <p style="font-family:Calibri; font-size:18px"> 
+                Post a job to find a handy man that can help you.
+                <br />
+                When you post your job you will get proposal from local handy men and you can discuss the conditions with them and accept or reject their proposals.
+                If you prefer, you can also search for local handy men and send them a proposal.
+               </div>
+    </div>
+    }
+
+<div class="container">
+
+@using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                
+                //Show Validation Summary if there's any error
+                if (ViewData.ModelState.Any(x => x.Value.Errors.Any())) 
+                { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+                }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+
+                                    <label>Title</label>
+                                    @Html.TextBoxFor(m => m.JobName, new { @class = "form-control"})
+                                    @Html.ValidationMessageFor(m => m.JobName,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                    <label>Category</label>
+                                    <br />
+                                    @Html.DropDownListFor(m => m.JobType, 
+                                         new SelectList(Model.Categories, 
+                                        "CategoryId", "Value", 
+                                        Model.Categories.First().CategoryId))
+                                    <br />
+                                    <br />
+
+                                    <label>Description</label>
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id="description"})
+                                    @Html.ValidationMessageFor(m => m.Description,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                    <label>Where is the work going to take place?</label>
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(m => m.Address,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    
+                                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", @placeholder = "Post Code" })
+                                    @Html.ValidationMessageFor(m => m.PostalCode,String.Empty , new { @class = "help-inline", @style="color:red" })
+
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City,String.Empty , new { @class = "help-inline", @style="color:red" })
+
+                                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "Country" })
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Post Job" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

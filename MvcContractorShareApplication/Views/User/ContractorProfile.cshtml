@@ -1,0 +1,204 @@
+﻿@model MvcContractorShareApplication.Models.ViewContractorModel
+
+@{
+    ViewBag.Title = "MyClientProfile";
+}
+
+@Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2 style="font-family:Calibri; font-size:24px; font-weight:bold">@Html.DisplayFor(model=> model.PageTitle)</h2>
+    </div>
+</div>  
+}
+
+    <div class ="container">
+
+<div class="container" id ="profile">
+    <div class="row">
+        <div class="col-md-9 col-sm-12">
+            <br />
+            <div class="panel panel-default profile-panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 text-center" >
+                            <img class="img-circle user-image" src="../../images/contractorprofile.png"  style="width:100%" >
+                            
+                            
+                            @if (Model.userId != Convert.ToInt32(Session["userId"]))
+                            {
+                                if (Model.IsFavourite)
+                                {
+                                    <a class="btn btn-sm btn-primary" href='@Url.Action("RemoveFavourite", "User", new { id=Model.userId })'>
+                                        <i class="fa fa-heart"></i> Favourite
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-primary" href='@Url.Action("AddFavourite", "User", new { id=Model.userId })'>
+                                        <i class="fa fa-heart-o"></i> Add Favourite
+                                    </a>
+                                }
+                            }
+
+                        </div>
+                        <div class="col-sm-9 col-xs-12 user-info-box">
+                            @if (Model.userId== Convert.ToInt32(Session["userId"]))
+                            {
+                                <a class="btn btn-sm pull-right btn-primary" href='@Url.Action("EditContractorProfile", "User", new { id=Model.userId })'>
+                                    <i class="fa fa-edit"></i>
+                                    Edit…
+                                </a>
+                            }
+                            else
+                            {
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-sm pull-right btn-primary">Action</button>
+								    <button class="btn btn-sm dropdown-toggle pull-right btn-primary" data-toggle="dropdown"><span class="caret"></span></button>
+								    <ul class="dropdown-menu">
+
+                                @if (Model.IsFavourite)
+                                {
+                                    <li><a href='@Url.Action("RemoveFavourite", "User", new { id= Model.userId })'><i class="fa fa-heart"></i> Remove Favourite</a></li>      
+                                }
+                                else
+                                {
+                                    <li><a href='@Url.Action("AddFavourite", "User", new { id= Model.userId })'><i class="fa fa-heart-o"></i> Add Favourite</a></li>      
+                                }
+
+                                @if (Model.IsBlocked)
+                                {
+                                    <li><a href='@Url.Action("BlockUser", "User", new { id= Model.userId })'><i class="fa fa-check"></i> UnBlock</a></li>      
+                                }
+                                else
+                                {
+                                    <li><a href='@Url.Action("BlockUser", "User", new { id= Model.userId })'><i class="fa fa-ban"></i> Block</a></li>      
+                                }
+
+                                    <li><a href='@Url.Action("DenounceUser", "User", new { id= Model.userId })'><i class="fa fa-exclamation"></i> Denounce</a></li>      
+
+                                    </ul>
+							    </div>
+                            }
+
+                            <h3 class="user-name">@Html.DisplayFor(model => model.CompanyName)</h3>
+                      
+                            
+                            <figcaption class="ratings">
+                                @for(var i=0; i<5; i++){ 
+                                    if(i< Model.AverageRate){ 
+                                        <a href="#">
+                                            <span class="fa fa-star"></span>
+                                        </a>
+                                     } 
+                                     else { 
+                                        <a href="#">
+                                            <span class="fa fa-star-o"></span>
+                                        </a> 
+                                     } 
+                                 }
+                            </figcaption>    
+                            
+                            <br />
+                            <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p><strong><i class="fa fa-envelope"></i> E-mail: </strong><span">@Html.DisplayFor(model => model.Email)</span></p>
+                                        <p><strong><i class="fa fa-phone-square"></i> Phone: </strong><span>@Html.DisplayFor(model => model.PhoneNumber)</span></p>
+                                        <p><strong><i class="fa fa-mobile-phone"></i> Mobile Phone: </strong><span>@Html.DisplayFor(model => model.MobileNumber)</span></p>
+                                         <p><strong><i class="fa fa-globe"></i> Website: </strong><span>@Html.DisplayFor(model => model.website)</span></p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p><strong><i class="fa fa-home"></i> Address: </strong><span>@Html.DisplayFor(model => model.Address)</span></p>
+                                        <p><strong><i class="fa fa-envelope-o"></i> Postcode: </strong><span>@Html.DisplayFor(model => model.PostalCode)</span></p>
+                                        <p><strong><i class="fa fa-flag"></i> City: </strong><span>@Html.DisplayFor(model => model.City)</span></p>
+                                        <p><strong><i class="fa fa-money"></i> Price per hour: </strong><span>@Html.DisplayFor(model => model.PricePerHour)</span></p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <div class="col-sm-12">
+          
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#home" data-toggle="tab">Us</a></li>
+            <li><a href="#location" data-toggle="tab">Location</a></li>
+            <li><a href="#messages" data-toggle="tab">Comments</a></li>
+          </ul>
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="row">
+                    <div class="panel aboutus">
+                        <div class="panel-body">
+                            <h3><i class="fa fa-users fa-lg"></i> About us</h3>
+                            <hr class="colorgraph">
+                            @Html.DisplayFor(model => model.Description)
+                        </div>
+                    </div>
+
+                    <div class="panel services">
+                        <div class="panel-body">
+                            <h3><i class="fa fa-wrench fa-lg"></i> Our services</h3>
+                            <hr class="colorgraph">
+                            
+                            <table class="table table-striped" id="ourservicestable">
+                                @foreach (var category in Model.Categories)
+                                {
+                                        <tr>@Html.DisplayFor(categoryitem => category)</tr>
+                                        <br />
+                                }    
+                            </table>                    
+                          </div>
+                    </div>
+
+                  	<ul class="pagination" id="myPager"></ul>
+              </div><!--/table-resp-->  
+             </div><!--/tab-pane-->
+
+              <div class="tab-pane" id="location">
+               <div class="panel map">
+                <div class="panel-body">
+                    <h3><i class="fa fa-users fa-lg"></i>Where are we</h3>
+                    <hr class="colorgraph">
+                    	<div class="row-fluid">
+        <div class="span8">
+        	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="@Model.mapsource"></iframe>
+    	</div>
+    	
+      	<div class="span4">
+    		<address>
+    			<strong>@Html.DisplayFor(model => model.CompanyName)</strong><br>
+    		    @Html.DisplayFor(model => model.Address)<br>
+    		    @Html.DisplayFor(model => model.PostalCode)<br>
+    		    @Html.DisplayFor(model => model.City)<br>
+    		    @Html.DisplayFor(model => model.Country)<br>
+    		</address>
+    	</div>
+    </div>
+                 </div>
+             </div>
+             </div><!--/tab-pane-->
+
+             <div class="tab-pane" id="messages">
+               <h2></h2>
+               <ul class="list-group">
+                  <li class="list-group-item text-right"><a href="#" class="pull-left">Test..</a> 2.13.2014</li>
+                </ul> 
+             </div><!--/tab-pane-->
+             
+          </div><!--/tab-pane-->
+
+          </div><!--/tab-content-->            
+             
+                </div>
+            </div>
+                </div>
+
+        </div>
+
+    

@@ -1,0 +1,108 @@
+﻿@model MvcContractorShareApplication.Models.Client
+
+@{
+    ViewBag.Title = "EditJob";
+}
+@Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Edit Profile</h2>
+    </div>
+    }
+
+<div class="container">
+
+@using (Html.BeginForm(null,null,null,FormMethod.Post, new {enctype = "multipart/form-data"})) 
+{
+    @Html.AntiForgeryToken()
+                
+    //Show Validation Summary if there's any error
+    if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+    }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <br />
+                                      @*<div class="text-center">
+                                        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+                                        <h6>Upload a different photo...</h6>
+  
+                                        <div class="form-group">
+                                        @Html.Label("Avatar", new {@class = "control-label col-md-2"})
+                                        <div class="col-md-10">
+                                            <input type="file" id="Avatar" name="upload" />
+                                        </div>
+                                        </div>
+                                      </div>*@
+
+                                   <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.userId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+
+
+                                    <label>FirstName</label>
+                                    @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Firstname, String.Empty, new { @class = "help-inline", @style = "color:red" })
+                                    <br />
+
+                                     <label>Surname</label>
+                                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Surname, String.Empty, new { @class = "help-inline", @style = "color:red" })
+
+                                    <br />
+                                    <label>Email</label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, String.Empty, new { @class = "help-inline", @style = "color:red" })
+                                    <br />
+
+                                    <label>Phone</label>
+                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                    <br />
+
+                                    <label>Mobile Phone</label>
+                                    @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control" })
+                                    <br />
+
+                                    <label>Address</label>
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(m => m.Address, String.Empty, new { @class = "help-inline", @style = "color:red" })
+                                    
+                                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", @placeholder = "Post Code" })
+                                    @Html.ValidationMessageFor(m => m.PostalCode, String.Empty, new { @class = "help-inline", @style = "color:red" })
+
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City, String.Empty, new { @class = "help-inline", @style = "color:red" })
+
+                                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "Country" })
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Submit Changes" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

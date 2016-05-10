@@ -1,0 +1,107 @@
+﻿@model MvcContractorShareApplication.Models.ReplyProposalModel
+
+@{
+    ViewBag.Title = "ReplyProposal";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Reply Proposal</h2>
+    </div>
+    }
+    <br />
+
+   
+
+    <div class="container">
+
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+        <br />
+        <br />
+           <ul class="list-group">
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Job</strong></span> @Html.DisplayFor(model => model.JobName)</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Location</strong></span> 
+                @Html.DisplayFor(model => model.Address) <br />
+                @Html.DisplayFor(model => model.City) <br />
+            </li>
+          </ul> 
+
+        </div><!--/col-3-->
+    	<div class="col-sm-6">
+          
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                <div class="row">
+                        <h4>Send a message to @Html.DisplayFor(model => model.MessageToUserName)</h4>
+
+                     
+                        @using (Html.BeginForm()) {
+                        @Html.AntiForgeryToken()
+
+                            <form role="form">
+                            <fieldset>
+
+                            <div class="form-group">
+
+                                     <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.ProposalId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.MessageToUserId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+                                    
+                                    <label>Message</label>
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", id="message"})
+                                    @Html.ValidationMessageFor(m => m.Message,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                    <div class="tab-pane" id="messages">
+                                    <ul class="list-group">                                 
+                                       @foreach (var item in Model.Messages) {
+
+                                          <li class="list-group-item text-right">
+                                              <div class="pull-left" style="font-weight:bold" >@Html.DisplayFor(model => item.FromUserName) to @Html.DisplayFor(model => item.ToUserName)</div> 
+                                              <div style="font-weight:bold">@Html.DisplayFor(model => item.Sent)</div>
+                                              <br />
+                                              <div class="pull-left">@Html.DisplayFor(model => item.message)</div> 
+                                              <br />
+                                          </li>
+                                       }
+                                   </ul> 
+
+                                    <label>Original Proposal</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.OrginialMessage)
+
+                                    <br />
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Send Message" class="btn btn-primary btn-block btn-default" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+                        }
+                </div>
+
+                  	<ul class="pagination" id="myPager"></ul>
+              </div><!--/table-resp-->
+              
+              <hr>
+              
+             
+             
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->

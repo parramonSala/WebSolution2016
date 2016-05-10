@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContractorShare" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" />
+      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IContractorShare_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangePreferences_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePreferences" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangePreferences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetPreferences_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferences" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetPreferences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SearchContractors_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchContractors" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SearchContractors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchContractorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserAverageRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAverageRating" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserAverageRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAverageRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddFavourite_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFavourite" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddFavourite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFavouriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_RemoveFavourite_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFavourite" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_RemoveFavourite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFavouriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserFavourites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFavourites" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserFavourites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFavouritesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UserIsFavourite_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsFavourite" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UserIsFavourite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsFavouriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddDenunce_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDenunce" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddDenunce_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDenunceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_BlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUser" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_BlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UserIsBlocked_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsBlocked" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UserIsBlocked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsBlockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateServiceRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateServiceRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateServiceRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditJob" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetServiceRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetServiceRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyCurrentServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyCurrentServices" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyCurrentServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyCurrentServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyCompletedServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyCompletedServices" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyCompletedServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyCompletedServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetOpenServicesAssignedToMe_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOpenServicesAssignedToMe" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetOpenServicesAssignedToMe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOpenServicesAssignedToMeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetClosedServicesAssignedToMe_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedServicesAssignedToMe" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetClosedServicesAssignedToMe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedServicesAssignedToMeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddJobComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddJobComment" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddJobComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddJobCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobComments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobComments" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobComments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteJobComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobComment" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteJobComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteJobCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangeServiceStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeServiceStatus" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangeServiceStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeServiceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SearchServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchServices" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SearchServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetServiceRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRate" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetServiceRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateProposal_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProposal" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateProposal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProposalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetProposal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProposal" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetProposal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProposalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditProposal_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditProposal" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditProposal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditProposalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UpdateProposalStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProposalStatus" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_UpdateProposalStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProposalStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetActiveProposals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveProposals" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetActiveProposals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveProposalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyClosedProposals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyClosedProposals" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetMyClosedProposals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyClosedProposalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SendProposalMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendProposalMessage" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_SendProposalMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendProposalMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetProposalMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProposalMessages" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetProposalMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProposalMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessage" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetActiveAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetActiveAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetClosedAppointments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedAppointments" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetClosedAppointments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedAppointmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CloseAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CloseAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CancelAppointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelAppointment" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CancelAppointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelAppointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTask" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTask" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangeTaskStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTaskStatus" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ChangeTaskStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTaskStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobTasks" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRating" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserRates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRates" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserRates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRatesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IContractorShare">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/Login" message="tns:IContractorShare_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/LoginResponse" message="tns:IContractorShare_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/Register" message="tns:IContractorShare_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/RegisterResponse" message="tns:IContractorShare_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ResetPassword" message="tns:IContractorShare_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ResetPasswordResponse" message="tns:IContractorShare_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ChangePassword" message="tns:IContractorShare_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ChangePasswordResponse" message="tns:IContractorShare_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePreferences">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ChangePreferences" message="tns:IContractorShare_ChangePreferences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ChangePreferencesResponse" message="tns:IContractorShare_ChangePreferences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferences">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetPreferences" message="tns:IContractorShare_GetPreferences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetPreferencesResponse" message="tns:IContractorShare_GetPreferences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchContractors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/SearchContractors" message="tns:IContractorShare_SearchContractors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/SearchContractorsResponse" message="tns:IContractorShare_SearchContractors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAverageRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserAverageRating" message="tns:IContractorShare_GetUserAverageRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserAverageRatingResponse" message="tns:IContractorShare_GetUserAverageRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditUserProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/EditUserProfile" message="tns:IContractorShare_EditUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/EditUserProfileResponse" message="tns:IContractorShare_EditUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserProfile" message="tns:IContractorShare_GetUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserProfileResponse" message="tns:IContractorShare_GetUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFavourite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddFavourite" message="tns:IContractorShare_AddFavourite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddFavouriteResponse" message="tns:IContractorShare_AddFavourite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFavourite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/RemoveFavourite" message="tns:IContractorShare_RemoveFavourite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/RemoveFavouriteResponse" message="tns:IContractorShare_RemoveFavourite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavourites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserFavourites" message="tns:IContractorShare_GetUserFavourites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserFavouritesResponse" message="tns:IContractorShare_GetUserFavourites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsFavourite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/UserIsFavourite" message="tns:IContractorShare_UserIsFavourite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/UserIsFavouriteResponse" message="tns:IContractorShare_UserIsFavourite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDenunce">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddDenunce" message="tns:IContractorShare_AddDenunce_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddDenunceResponse" message="tns:IContractorShare_AddDenunce_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/BlockUser" message="tns:IContractorShare_BlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/BlockUserResponse" message="tns:IContractorShare_BlockUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsBlocked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/UserIsBlocked" message="tns:IContractorShare_UserIsBlocked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/UserIsBlockedResponse" message="tns:IContractorShare_UserIsBlocked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateServiceRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CreateServiceRequest" message="tns:IContractorShare_CreateServiceRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CreateServiceRequestResponse" message="tns:IContractorShare_CreateServiceRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/EditJob" message="tns:IContractorShare_EditJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/EditJobResponse" message="tns:IContractorShare_EditJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetServiceRequest" message="tns:IContractorShare_GetServiceRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetServiceRequestResponse" message="tns:IContractorShare_GetServiceRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCurrentServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetMyCurrentServices" message="tns:IContractorShare_GetMyCurrentServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetMyCurrentServicesResponse" message="tns:IContractorShare_GetMyCurrentServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCompletedServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetMyCompletedServices" message="tns:IContractorShare_GetMyCompletedServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetMyCompletedServicesResponse" message="tns:IContractorShare_GetMyCompletedServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenServicesAssignedToMe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetOpenServicesAssignedToMe" message="tns:IContractorShare_GetOpenServicesAssignedToMe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetOpenServicesAssignedToMeResponse" message="tns:IContractorShare_GetOpenServicesAssignedToMe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedServicesAssignedToMe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetClosedServicesAssignedToMe" message="tns:IContractorShare_GetClosedServicesAssignedToMe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetClosedServicesAssignedToMeResponse" message="tns:IContractorShare_GetClosedServicesAssignedToMe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddJobComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddJobComment" message="tns:IContractorShare_AddJobComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddJobCommentResponse" message="tns:IContractorShare_AddJobComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobComments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetJobComments" message="tns:IContractorShare_GetJobComments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetJobCommentsResponse" message="tns:IContractorShare_GetJobComments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/DeleteJobComment" message="tns:IContractorShare_DeleteJobComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/DeleteJobCommentResponse" message="tns:IContractorShare_DeleteJobComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeServiceStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ChangeServiceStatus" message="tns:IContractorShare_ChangeServiceStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ChangeServiceStatusResponse" message="tns:IContractorShare_ChangeServiceStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/SearchServices" message="tns:IContractorShare_SearchServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/SearchServicesResponse" message="tns:IContractorShare_SearchServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetServiceRate" message="tns:IContractorShare_GetServiceRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetServiceRateResponse" message="tns:IContractorShare_GetServiceRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProposal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CreateProposal" message="tns:IContractorShare_CreateProposal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CreateProposalResponse" message="tns:IContractorShare_CreateProposal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProposal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetProposal" message="tns:IContractorShare_GetProposal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetProposalResponse" message="tns:IContractorShare_GetProposal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditProposal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/EditProposal" message="tns:IContractorShare_EditProposal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/EditProposalResponse" message="tns:IContractorShare_EditProposal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProposalStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/UpdateProposalStatus" message="tns:IContractorShare_UpdateProposalStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/UpdateProposalStatusResponse" message="tns:IContractorShare_UpdateProposalStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveProposals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetActiveProposals" message="tns:IContractorShare_GetActiveProposals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetActiveProposalsResponse" message="tns:IContractorShare_GetActiveProposals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyClosedProposals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetMyClosedProposals" message="tns:IContractorShare_GetMyClosedProposals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetMyClosedProposalsResponse" message="tns:IContractorShare_GetMyClosedProposals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendProposalMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/SendProposalMessage" message="tns:IContractorShare_SendProposalMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/SendProposalMessageResponse" message="tns:IContractorShare_SendProposalMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProposalMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetProposalMessages" message="tns:IContractorShare_GetProposalMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetProposalMessagesResponse" message="tns:IContractorShare_GetProposalMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/DeleteMessage" message="tns:IContractorShare_DeleteMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/DeleteMessageResponse" message="tns:IContractorShare_DeleteMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetActiveAppointments" message="tns:IContractorShare_GetActiveAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetActiveAppointmentsResponse" message="tns:IContractorShare_GetActiveAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedAppointments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetClosedAppointments" message="tns:IContractorShare_GetClosedAppointments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetClosedAppointmentsResponse" message="tns:IContractorShare_GetClosedAppointments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetAppointment" message="tns:IContractorShare_GetAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetAppointmentResponse" message="tns:IContractorShare_GetAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CloseAppointment" message="tns:IContractorShare_CloseAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CloseAppointmentResponse" message="tns:IContractorShare_CloseAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CancelAppointment" message="tns:IContractorShare_CancelAppointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CancelAppointmentResponse" message="tns:IContractorShare_CancelAppointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CreateTask" message="tns:IContractorShare_CreateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CreateTaskResponse" message="tns:IContractorShare_CreateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/EditTask" message="tns:IContractorShare_EditTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/EditTaskResponse" message="tns:IContractorShare_EditTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetTask" message="tns:IContractorShare_GetTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetTaskResponse" message="tns:IContractorShare_GetTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTaskStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ChangeTaskStatus" message="tns:IContractorShare_ChangeTaskStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ChangeTaskStatusResponse" message="tns:IContractorShare_ChangeTaskStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/DeleteTask" message="tns:IContractorShare_DeleteTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/DeleteTaskResponse" message="tns:IContractorShare_DeleteTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetJobTasks" message="tns:IContractorShare_GetJobTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetJobTasksResponse" message="tns:IContractorShare_GetJobTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddRating" message="tns:IContractorShare_AddRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddRatingResponse" message="tns:IContractorShare_AddRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserRates" message="tns:IContractorShare_GetUserRates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserRatesResponse" message="tns:IContractorShare_GetUserRates_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IContractorShare" type="tns:IContractorShare">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePreferences">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ChangePreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferences">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetPreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchContractors">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/SearchContractors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAverageRating">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserAverageRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditUserProfile">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/EditUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFavourite">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddFavourite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFavourite">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/RemoveFavourite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavourites">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserFavourites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsFavourite">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/UserIsFavourite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDenunce">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddDenunce" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/BlockUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsBlocked">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/UserIsBlocked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateServiceRequest">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CreateServiceRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditJob">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/EditJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRequest">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetServiceRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCurrentServices">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetMyCurrentServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyCompletedServices">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetMyCompletedServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenServicesAssignedToMe">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetOpenServicesAssignedToMe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedServicesAssignedToMe">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetClosedServicesAssignedToMe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJobComment">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddJobComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobComments">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetJobComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteJobComment">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/DeleteJobComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeServiceStatus">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ChangeServiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchServices">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/SearchServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRate">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetServiceRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProposal">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CreateProposal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProposal">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetProposal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditProposal">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/EditProposal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProposalStatus">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/UpdateProposalStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveProposals">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetActiveProposals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyClosedProposals">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetMyClosedProposals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendProposalMessage">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/SendProposalMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProposalMessages">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetProposalMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessage">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/DeleteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveAppointments">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetActiveAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedAppointments">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetClosedAppointments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointment">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseAppointment">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CloseAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CancelAppointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CreateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditTask">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/EditTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTaskStatus">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ChangeTaskStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/DeleteTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobTasks">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetJobTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRating">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRates">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractorShare">
+    <wsdl:port name="BasicHttpBinding_IContractorShare" binding="tns:BasicHttpBinding_IContractorShare">
+      <soap:address location="http://contractorshare.apphb.com/ContractorShare.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

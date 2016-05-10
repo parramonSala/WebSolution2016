@@ -1,0 +1,79 @@
+﻿@model MvcContractorShareApplication.Models.EditProposalModel
+
+@{
+    ViewBag.Title = "EditProposal";
+}
+@Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Edit proposal for @Html.DisplayFor(model => model.JobName)</h2>
+             </div>
+    }
+
+<div class="container">
+
+@using (Html.BeginForm())
+{
+                @Html.AntiForgeryToken()
+                
+    //Show Validation Summary if there's any error
+    if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+    }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <br />
+                                    <br />
+                                    
+                                   <!--  Hidden fields  -->
+                                    @Html.HiddenFor(m => m.ProposalId, new { @class = "form-control" })
+
+                                    <!-- End Hidden fields -->
+
+                                    <label>Aprox Duration (in hours)</label>
+                                    @Html.TextAreaFor(m => m.AproxDuration, new { @class = "form-control", @type = "number" }) 
+                                    @Html.ValidationMessageFor(m => m.AproxDuration, null, new {  @style="color:red" })
+                                    <br />
+
+                                    <label>Proposed Date and Time</label>
+                                    @Html.TextAreaFor(m => m.ProposedTime, new { @class = "form-control", id="aproxduration"})
+                                    @Html.ValidationMessageFor(m => m.ProposedTime, null, new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                    <label>Proposed Price</label>
+                                    @Html.TextAreaFor(m => m.ProposedPrice, new { @class = "form-control", @type = "number" }) 
+                                    @Html.ValidationMessageFor(m => m.ProposedPrice, null, new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Submit Changes" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

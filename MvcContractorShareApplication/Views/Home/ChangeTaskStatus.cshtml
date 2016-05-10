@@ -1,0 +1,75 @@
+﻿@model MvcContractorShareApplication.Models.ChangeTaskStatus
+
+@{
+    ViewBag.Title = "EditTask";
+}
+@Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Change Task  @Html.DisplayFor(model => model.Name) Status</h2>
+
+
+    </div>
+    }
+
+<div class="container">
+    
+@using (Html.BeginForm())
+{
+                @Html.AntiForgeryToken()
+                
+    //Show Validation Summary if there's any error
+    if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+    }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <br />
+                                    <br />
+                                    
+                                   <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.TaskId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+
+                                    <label>Status</label>
+                                    <br />
+                                    @Html.DropDownListFor(m => m.StatusId,
+                                         new SelectList(Model.StatusList,
+                                        "StatusId", "Value",
+                                        Model.StatusList.First().StatusId))
+                                    <br />
+
+                                    
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-14 col-md-4">
+                                        <input type="submit" value="Change Status" class="btn btn-primary btn-block btn-md" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

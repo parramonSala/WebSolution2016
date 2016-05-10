@@ -1,0 +1,135 @@
+﻿@model MvcContractorShareApplication.Models.SearchContractorModel
+@{
+    ViewBag.Title = "ContractorSearch";
+}
+
+@Html.Partial("_NavBar")
+
+@section featured {
+<div class="jumbotron jumbotron-special-short">
+     <div class="container">
+            <h2 style="font-family:Calibri; font-size:24px; font-weight:bold">Search Contractors</h2>
+    </div>
+</div>
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="form-horizontal">
+         <div class="col-xs-2">
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", @placeholder = "Postal Code" })
+        </div>
+        <div class="col-xs-2">
+
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+        </div>
+        <div class="col-xs-2">
+
+            @Html.TextBoxFor(m => m.PricePerHour, new { @class = "form-control", @placeholder = "Max. Price per hour" })
+        </div>
+        <div class="col-xs-3">
+
+             @Html.DropDownListFor(m => m.CategoryId,
+                                         new SelectList(Model.Categories,
+                                        "CategoryId", "Value",
+                                        Model.Categories.First().CategoryId))
+
+        </div>
+
+        <div class="col-xs-2">
+
+             
+        </div>
+        <div class="col-xs-2">
+
+           <input type="submit" value="Search" class="btn btn-primary btn-block btn-default">
+
+        </div>
+    </div>
+</div>
+}
+     <br />
+
+<div class="table-responsive">
+<table class="table table-striped" id="contractorstable">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Categories</th>
+            <th>Address</th>
+            <th>Price per hour</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in Model.Contractors) {
+    
+        <tr>
+            <td width="25%">
+                <img class="img-circle user-image" src="../images/userprofile.png"  style="width:25%" >
+                <br />
+                 <b>
+                  @Html.ActionLink(item.CompanyName, "ContractorProfile", "User", new { Id = item.userId }, null /* html attributes */)
+                </b>
+            </td>
+        
+            <td width="25%">
+                @Html.DisplayFor(modelItem => item.CategoriesList)
+            </td>
+
+            <td width="25%">
+                @Html.DisplayFor(modelItem => item.Address)
+                <br />
+                @Html.DisplayFor(modelItem => item.PostalCode)
+                <br />
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+
+            <td width="10%">
+                @Html.DisplayFor(modelItem => item.PricePerHour) 
+            </td>
+
+            <td width="15%">
+                @for(var i=0; i<5; i++){ 
+                    if(i<item.AverageRate){ 
+                        <a href="#">
+                            <span class="fa fa-star"></span>
+                        </a>
+                     } 
+                     else { 
+                        <a href="#">
+                            <span class="fa fa-star-o"></span>
+                        </a> 
+                     } 
+                 }
+            </td>
+
+        </tr>
+    }
+     </tbody>
+</table>
+</div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $('#contractorstable').dataTable({ bPaginate: false, bFilter: false, bInfo: false });
+
+        });
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+        $('body .dropdown-toggle').dropdown(); 
+    </script>
+    }
