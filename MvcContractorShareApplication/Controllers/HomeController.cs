@@ -381,7 +381,7 @@ namespace MvcContractorShareApplication.Controllers
 
             if (result.message == "OK")
             {
-                return RedirectToAction("MyJobs", "Home");
+                return RedirectToAction("ContractorMyJobs", "Home");
             }
             else
             {
@@ -796,6 +796,31 @@ namespace MvcContractorShareApplication.Controllers
                     activetab = "tasks"
                 });
             }
+        }
+
+        public ActionResult RateJobsList()
+        {
+            List<JobRate> jobratelist = new List<JobRate>();
+
+            var jobstoberated = ContractorShareService.GetJobRateInfoList(Session["userId"].ToString());
+
+            foreach (var j in jobstoberated)
+            {
+                JobRate jobrate = new JobRate();
+                jobrate.JobId = j.JobId;
+                jobrate.JobName = j.JobName;
+                jobrate.JobCategoryId = j.JobCategoryId;
+                jobrate.JobCategoryName = EnumHelper.GetDescription((ServiceCategoryEnum)j.JobCategoryId);
+                jobrate.ContractorID = j.ContractorID;
+                jobrate.ContractorName = j.ContractorName;
+                jobrate.AverageRate = j.AverageRate;
+                jobrate.AppointmentDate = j.AppointmentDate;
+                jobrate.Price = "Total Price:" + j.Price.ToString();
+
+                jobratelist.Add(jobrate);
+            }
+
+            return View(jobratelist);
         }
 
 

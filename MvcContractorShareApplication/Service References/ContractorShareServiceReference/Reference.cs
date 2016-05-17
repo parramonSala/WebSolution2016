@@ -3522,6 +3522,9 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         private MvcContractorShareApplication.ContractorShareServiceReference.Proposal[] ProposalsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> RatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MvcContractorShareApplication.ContractorShareServiceReference.Rating[] RatingsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3532,6 +3535,9 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MvcContractorShareApplication.ContractorShareServiceReference.Task[] TasksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> TotalPriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MvcContractorShareApplication.ContractorShareServiceReference.User UserField;
@@ -3771,6 +3777,19 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Rated {
+            get {
+                return this.RatedField;
+            }
+            set {
+                if ((this.RatedField.Equals(value) != true)) {
+                    this.RatedField = value;
+                    this.RaisePropertyChanged("Rated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public MvcContractorShareApplication.ContractorShareServiceReference.Rating[] Ratings {
             get {
                 return this.RatingsField;
@@ -3818,6 +3837,19 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
                 if ((object.ReferenceEquals(this.TasksField, value) != true)) {
                     this.TasksField = value;
                     this.RaisePropertyChanged("Tasks");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> TotalPrice {
+            get {
+                return this.TotalPriceField;
+            }
+            set {
+                if ((this.TotalPriceField.Equals(value) != true)) {
+                    this.TotalPriceField = value;
+                    this.RaisePropertyChanged("TotalPrice");
                 }
             }
         }
@@ -5845,6 +5877,9 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         private string CommentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FromUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private float RatingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -5875,6 +5910,19 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
                 if ((object.ReferenceEquals(this.CommentField, value) != true)) {
                     this.CommentField = value;
                     this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FromUserId {
+            get {
+                return this.FromUserIdField;
+            }
+            set {
+                if ((this.FromUserIdField.Equals(value) != true)) {
+                    this.FromUserIdField = value;
+                    this.RaisePropertyChanged("FromUserId");
                 }
             }
         }
@@ -5927,6 +5975,163 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
                 if ((this.ToUserIdField.Equals(value) != true)) {
                     this.ToUserIdField = value;
                     this.RaisePropertyChanged("ToUserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="JobRateInfo", Namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain")]
+    [System.SerializableAttribute()]
+    public partial class JobRateInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> AppointmentDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> AverageRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ContractorIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContractorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int JobCategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int JobIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string JobNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> AppointmentDate {
+            get {
+                return this.AppointmentDateField;
+            }
+            set {
+                if ((this.AppointmentDateField.Equals(value) != true)) {
+                    this.AppointmentDateField = value;
+                    this.RaisePropertyChanged("AppointmentDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> AverageRate {
+            get {
+                return this.AverageRateField;
+            }
+            set {
+                if ((this.AverageRateField.Equals(value) != true)) {
+                    this.AverageRateField = value;
+                    this.RaisePropertyChanged("AverageRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ContractorID {
+            get {
+                return this.ContractorIDField;
+            }
+            set {
+                if ((this.ContractorIDField.Equals(value) != true)) {
+                    this.ContractorIDField = value;
+                    this.RaisePropertyChanged("ContractorID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContractorName {
+            get {
+                return this.ContractorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContractorNameField, value) != true)) {
+                    this.ContractorNameField = value;
+                    this.RaisePropertyChanged("ContractorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JobCategoryId {
+            get {
+                return this.JobCategoryIdField;
+            }
+            set {
+                if ((this.JobCategoryIdField.Equals(value) != true)) {
+                    this.JobCategoryIdField = value;
+                    this.RaisePropertyChanged("JobCategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JobId {
+            get {
+                return this.JobIdField;
+            }
+            set {
+                if ((this.JobIdField.Equals(value) != true)) {
+                    this.JobIdField = value;
+                    this.RaisePropertyChanged("JobId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string JobName {
+            get {
+                return this.JobNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JobNameField, value) != true)) {
+                    this.JobNameField = value;
+                    this.RaisePropertyChanged("JobName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
                 }
             }
         }
@@ -6126,10 +6331,10 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         System.Threading.Tasks.Task<double> GetServiceRateAsync(string jobId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/CreateProposal", ReplyAction="http://tempuri.org/IContractorShare/CreateProposalResponse")]
-        string CreateProposal(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal);
+        MvcContractorShareApplication.ContractorShareServiceReference.Result CreateProposal(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/CreateProposal", ReplyAction="http://tempuri.org/IContractorShare/CreateProposalResponse")]
-        System.Threading.Tasks.Task<string> CreateProposalAsync(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal);
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> CreateProposalAsync(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetProposal", ReplyAction="http://tempuri.org/IContractorShare/GetProposalResponse")]
         MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo GetProposal(string proposalId);
@@ -6138,16 +6343,16 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo> GetProposalAsync(string proposalId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/EditProposal", ReplyAction="http://tempuri.org/IContractorShare/EditProposalResponse")]
-        string EditProposal(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo);
+        MvcContractorShareApplication.ContractorShareServiceReference.Result EditProposal(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/EditProposal", ReplyAction="http://tempuri.org/IContractorShare/EditProposalResponse")]
-        System.Threading.Tasks.Task<string> EditProposalAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo);
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> EditProposalAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/UpdateProposalStatus", ReplyAction="http://tempuri.org/IContractorShare/UpdateProposalStatusResponse")]
-        string UpdateProposalStatus(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info);
+        MvcContractorShareApplication.ContractorShareServiceReference.Result UpdateProposalStatus(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/UpdateProposalStatus", ReplyAction="http://tempuri.org/IContractorShare/UpdateProposalStatusResponse")]
-        System.Threading.Tasks.Task<string> UpdateProposalStatusAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info);
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> UpdateProposalStatusAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetActiveProposals", ReplyAction="http://tempuri.org/IContractorShare/GetActiveProposalsResponse")]
         MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo[] GetActiveProposals(string userId, bool includeFromMe);
@@ -6162,10 +6367,10 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo[]> GetMyClosedProposalsAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/SendProposalMessage", ReplyAction="http://tempuri.org/IContractorShare/SendProposalMessageResponse")]
-        string SendProposalMessage(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo);
+        MvcContractorShareApplication.ContractorShareServiceReference.Result SendProposalMessage(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/SendProposalMessage", ReplyAction="http://tempuri.org/IContractorShare/SendProposalMessageResponse")]
-        System.Threading.Tasks.Task<string> SendProposalMessageAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo);
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> SendProposalMessageAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetProposalMessages", ReplyAction="http://tempuri.org/IContractorShare/GetProposalMessagesResponse")]
         MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo[] GetProposalMessages(string proposalId);
@@ -6246,16 +6451,28 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.TaskInfo[]> GetJobTasksAsync(string jobId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/AddRating", ReplyAction="http://tempuri.org/IContractorShare/AddRatingResponse")]
-        string AddRating(string userId, int ToUser, int service, string title, string comment, float rate);
+        MvcContractorShareApplication.ContractorShareServiceReference.Result AddRating(string userId, MvcContractorShareApplication.ContractorShareServiceReference.Rate rateinfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/AddRating", ReplyAction="http://tempuri.org/IContractorShare/AddRatingResponse")]
-        System.Threading.Tasks.Task<string> AddRatingAsync(string userId, int ToUser, int service, string title, string comment, float rate);
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> AddRatingAsync(string userId, MvcContractorShareApplication.ContractorShareServiceReference.Rate rateinfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetUserRates", ReplyAction="http://tempuri.org/IContractorShare/GetUserRatesResponse")]
         MvcContractorShareApplication.ContractorShareServiceReference.Rate[] GetUserRates(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetUserRates", ReplyAction="http://tempuri.org/IContractorShare/GetUserRatesResponse")]
         System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Rate[]> GetUserRatesAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/DeleteRating", ReplyAction="http://tempuri.org/IContractorShare/DeleteRatingResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.Result DeleteRating(string userId, string RateId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/DeleteRating", ReplyAction="http://tempuri.org/IContractorShare/DeleteRatingResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> DeleteRatingAsync(string userId, string RateId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetJobRateInfoList", ReplyAction="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[] GetJobRateInfoList(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetJobRateInfoList", ReplyAction="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[]> GetJobRateInfoListAsync(string userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -6525,11 +6742,11 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
             return base.Channel.GetServiceRateAsync(jobId);
         }
         
-        public string CreateProposal(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal) {
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result CreateProposal(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal) {
             return base.Channel.CreateProposal(proposal);
         }
         
-        public System.Threading.Tasks.Task<string> CreateProposalAsync(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal) {
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> CreateProposalAsync(MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposal) {
             return base.Channel.CreateProposalAsync(proposal);
         }
         
@@ -6541,19 +6758,19 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
             return base.Channel.GetProposalAsync(proposalId);
         }
         
-        public string EditProposal(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo) {
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result EditProposal(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo) {
             return base.Channel.EditProposal(proposalId, proposalinfo);
         }
         
-        public System.Threading.Tasks.Task<string> EditProposalAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo) {
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> EditProposalAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.ProposalInfo proposalinfo) {
             return base.Channel.EditProposalAsync(proposalId, proposalinfo);
         }
         
-        public string UpdateProposalStatus(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info) {
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result UpdateProposalStatus(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info) {
             return base.Channel.UpdateProposalStatus(proposalId, info);
         }
         
-        public System.Threading.Tasks.Task<string> UpdateProposalStatusAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info) {
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> UpdateProposalStatusAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.UpdateProposalStatusInfo info) {
             return base.Channel.UpdateProposalStatusAsync(proposalId, info);
         }
         
@@ -6573,11 +6790,11 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
             return base.Channel.GetMyClosedProposalsAsync(userId);
         }
         
-        public string SendProposalMessage(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo) {
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result SendProposalMessage(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo) {
             return base.Channel.SendProposalMessage(proposalId, proposalmessageInfo);
         }
         
-        public System.Threading.Tasks.Task<string> SendProposalMessageAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo) {
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> SendProposalMessageAsync(string proposalId, MvcContractorShareApplication.ContractorShareServiceReference.MessageInfo proposalmessageInfo) {
             return base.Channel.SendProposalMessageAsync(proposalId, proposalmessageInfo);
         }
         
@@ -6685,12 +6902,12 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
             return base.Channel.GetJobTasksAsync(jobId);
         }
         
-        public string AddRating(string userId, int ToUser, int service, string title, string comment, float rate) {
-            return base.Channel.AddRating(userId, ToUser, service, title, comment, rate);
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result AddRating(string userId, MvcContractorShareApplication.ContractorShareServiceReference.Rate rateinfo) {
+            return base.Channel.AddRating(userId, rateinfo);
         }
         
-        public System.Threading.Tasks.Task<string> AddRatingAsync(string userId, int ToUser, int service, string title, string comment, float rate) {
-            return base.Channel.AddRatingAsync(userId, ToUser, service, title, comment, rate);
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> AddRatingAsync(string userId, MvcContractorShareApplication.ContractorShareServiceReference.Rate rateinfo) {
+            return base.Channel.AddRatingAsync(userId, rateinfo);
         }
         
         public MvcContractorShareApplication.ContractorShareServiceReference.Rate[] GetUserRates(string userId) {
@@ -6699,6 +6916,22 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         
         public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Rate[]> GetUserRatesAsync(string userId) {
             return base.Channel.GetUserRatesAsync(userId);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result DeleteRating(string userId, string RateId) {
+            return base.Channel.DeleteRating(userId, RateId);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> DeleteRatingAsync(string userId, string RateId) {
+            return base.Channel.DeleteRatingAsync(userId, RateId);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[] GetJobRateInfoList(string userId) {
+            return base.Channel.GetJobRateInfoList(userId);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[]> GetJobRateInfoListAsync(string userId) {
+            return base.Channel.GetJobRateInfoListAsync(userId);
         }
     }
 }

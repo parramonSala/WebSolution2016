@@ -373,5 +373,21 @@ namespace MvcContractorShareApplication.Controllers
             return View(model);
         }
 
+        //Rating
+        public ActionResult AddRate(int id)
+        {
+            var jobdetails = ContractorShareService.GetServiceRequest(id.ToString());
+            var contractordetails = ContractorShareService.GetUserProfile(jobdetails.ContractorID.ToString());
+
+            Rate model = new Rate();
+            model.JobId = id;
+            model.FromUserId = jobdetails.ClientID;
+            model.ToUserId = (int)jobdetails.ContractorID;
+            model.ToUserName= contractordetails.CompanyName;
+
+            return View(model);
+        }
+
+
     }
 }

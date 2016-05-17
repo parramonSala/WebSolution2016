@@ -253,15 +253,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTaskInfo" nillable="true" type="tns:ArrayOfTaskInfo" />
-  <xs:complexType name="ArrayOfRate">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rate" nillable="true" type="tns:Rate" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRate" nillable="true" type="tns:ArrayOfRate" />
   <xs:complexType name="Rate">
     <xs:sequence>
       <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromUserId" type="xs:int" />
       <xs:element minOccurs="0" name="Rating" type="xs:float" />
       <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
@@ -269,4 +264,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Rate" nillable="true" type="tns:Rate" />
+  <xs:complexType name="ArrayOfRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rate" nillable="true" type="tns:Rate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRate" nillable="true" type="tns:ArrayOfRate" />
+  <xs:complexType name="ArrayOfJobRateInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JobRateInfo" nillable="true" type="tns:JobRateInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJobRateInfo" nillable="true" type="tns:ArrayOfJobRateInfo" />
+  <xs:complexType name="JobRateInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AverageRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ContractorID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ContractorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobCategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="JobId" type="xs:int" />
+      <xs:element minOccurs="0" name="JobName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JobRateInfo" nillable="true" type="tns:JobRateInfo" />
 </xs:schema>

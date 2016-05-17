@@ -32,6 +32,7 @@
                     <li class="@ActiveItem("My Profile", "Home", null)">@Html.ActionLink("My Profile", "MyClientProfile", "User")</li>
                     <li class="@ActiveItem("Proposals", "Proposal", null)">@Html.ActionLink("Proposals", "MyProposals", "Proposal")</li>                    
                     <li class="@ActiveItem("Appointments", "Appointment", null)">@Html.ActionLink("Appointments", "MyActiveAppointments", "Appointment")</li>                    
+                    <li class="@ActiveItem("RateJobs", "Home", null)">@Html.ActionLink("Ratings", "RateJobsList", "Home")</li>                                  
                 }
                 else if (Convert.ToInt32(Session["usertype"]) == 2)
                 {

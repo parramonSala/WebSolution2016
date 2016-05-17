@@ -155,10 +155,12 @@
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostedDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Proposals" nillable="true" type="tns:ArrayOfProposal" />
+      <xs:element minOccurs="0" name="Rated" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Ratings" nillable="true" type="tns:ArrayOfRating" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
       <xs:element minOccurs="0" name="StatusID" type="xs:int" />
       <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:ArrayOfTask" />
+      <xs:element minOccurs="0" name="TotalPrice" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="User1" nillable="true" type="tns:User" />
     </xs:sequence>

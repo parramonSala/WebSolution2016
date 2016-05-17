@@ -1,0 +1,83 @@
+﻿@model MvcContractorShareApplication.Models.Rate
+
+@{
+    ViewBag.Title = "AddRate";
+}
+@Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Rate your job</h2>
+    </div>
+    }
+
+<div class="container">
+
+@using (Html.BeginForm())
+{
+                @Html.AntiForgeryToken()
+                
+    //Show Validation Summary if there's any error
+    if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+    }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <br />
+                                    <br />
+                                    
+                                   <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.FromUserId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.ToUserId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+
+                                    <h2>How was @Html.DisplayFor(model => model.ToUserName) ?</h2>
+
+                                    <label>Rate</label>
+                                    <div class="row">
+		                            <h2>Working Star Ratings for Bootstrap 3 <small>Hover and click on a star</small></h2>
+	                                </div>
+                                    <div class="row lead">
+                                        <div id="hearts" class="starrr"></div>
+                                        You gave a rating of <span id="count">0</span> star(s)
+	                                </div>
+                                    <br />
+
+                                    <label>Comment</label>
+                                    @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", id = "description" })
+                                    @Html.ValidationMessageFor(model => model.Comment)
+                                    <br />
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Rate" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("star")
+}

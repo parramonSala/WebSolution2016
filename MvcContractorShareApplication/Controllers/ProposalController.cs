@@ -53,15 +53,15 @@ namespace MvcContractorShareApplication.Controllers
                 proposalinfo.ProposedTime = (DateTime)model.ProposedTime;
                 proposalinfo.AproxDuration = model.AproxDuration;
 
-                string result = ContractorShareService.CreateProposal(proposalinfo);
+                var result = ContractorShareService.CreateProposal(proposalinfo);
 
-                if (result == "OK")
+                if (result.message == "OK")
                 {
                     return RedirectToAction("MyProposals", "Proposal");
                 }
                 else
                 {
-                    ModelState.AddModelError("", result);
+                    ModelState.AddModelError("", result.message);
                     return View(model);
                 }
             }
@@ -228,18 +228,18 @@ namespace MvcContractorShareApplication.Controllers
             messageinfo.ProposalId = model.ProposalId;
             messageinfo.Created = DateTime.Now;
 
-            string result = ContractorShareService.SendProposalMessage(model.ProposalId.ToString(), messageinfo);
+            var result = ContractorShareService.SendProposalMessage(model.ProposalId.ToString(), messageinfo);
 
             ViewProposalModel proposal = FillViewProposalModel(model.ProposalId);
 
-            if (result == "OK")
+            if (result.message == "OK")
             {
                 ViewBag.Active = "messages";
                 return View(proposal);
             }
             else
             {
-                ModelState.AddModelError("", result);
+                ModelState.AddModelError("", result.message);
                 return View(model);
             }
 
@@ -295,15 +295,15 @@ namespace MvcContractorShareApplication.Controllers
                 proposalinfo.StatusId = p.StatusId;
                 proposalinfo.Message = p.Message;
                
-                string result = ContractorShareService.EditProposal(model.ProposalId.ToString(),proposalinfo);
+                var result = ContractorShareService.EditProposal(model.ProposalId.ToString(),proposalinfo);
 
-                if (result == "OK")
+                if (result.message == "OK")
                 {
                     return RedirectToAction("ViewProposal", "Proposal", new { id = model.ProposalId });
                 }
                 else
                 {
-                    ModelState.AddModelError("", result);
+                    ModelState.AddModelError("", result.message);
                     return View(model);
                 }
             }
@@ -350,15 +350,15 @@ namespace MvcContractorShareApplication.Controllers
             proposalstatusinfo.StatusId = statusid;
             proposalstatusinfo.UpdatedByUserId = (int)Session["userId"];
 
-            string result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(),proposalstatusinfo);
+            var result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(),proposalstatusinfo);
 
-            if (result == "OK")
+            if (result.message == "OK")
             {
                 return RedirectToAction("MyProposals", "Proposal");
             }
             else
             {
-                ModelState.AddModelError("", result);
+                ModelState.AddModelError("", result.message);
                 return View(model);
             }
 
@@ -401,15 +401,15 @@ namespace MvcContractorShareApplication.Controllers
             proposalstatusinfo.StatusId = statusid;
             proposalstatusinfo.UpdatedByUserId = (int)Session["userId"];
 
-            string result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(), proposalstatusinfo);
+            var result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(), proposalstatusinfo);
 
-            if (result == "OK")
+            if (result.message == "OK")
             {
                 return RedirectToAction("MyProposals", "Proposal");
             }
             else
             {
-                ModelState.AddModelError("", result);
+                ModelState.AddModelError("", result.message);
                 return View(model);
             }
 
@@ -476,15 +476,15 @@ namespace MvcContractorShareApplication.Controllers
             proposalstatusinfo.StatusId = statusid;
             proposalstatusinfo.UpdatedByUserId = (int)Session["userId"];
 
-            string result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(), proposalstatusinfo);
+            var result = ContractorShareService.UpdateProposalStatus(model.ProposalId.ToString(), proposalstatusinfo);
 
-            if (result == "OK")
+            if (result.message == "OK")
             {
                 return RedirectToAction("MyProposals", "Proposal");
             }
             else
             {
-                ModelState.AddModelError("", result);
+                ModelState.AddModelError("", result.message);
                 return View(model);
             }
             

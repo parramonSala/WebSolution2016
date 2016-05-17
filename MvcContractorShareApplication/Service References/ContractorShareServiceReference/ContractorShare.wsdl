@@ -321,6 +321,18 @@
   <wsdl:message name="IContractorShare_GetUserRates_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserRatesResponse" />
   </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRating" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobRateInfoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRateInfoList" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetJobRateInfoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobRateInfoListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IContractorShare">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/Login" message="tns:IContractorShare_Login_InputMessage" />
@@ -529,6 +541,14 @@
     <wsdl:operation name="GetUserRates">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserRates" message="tns:IContractorShare_GetUserRates_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserRatesResponse" message="tns:IContractorShare_GetUserRates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/DeleteRating" message="tns:IContractorShare_DeleteRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/DeleteRatingResponse" message="tns:IContractorShare_DeleteRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobRateInfoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoList" message="tns:IContractorShare_GetJobRateInfoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse" message="tns:IContractorShare_GetJobRateInfoList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IContractorShare" type="tns:IContractorShare">
@@ -994,6 +1014,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserRates">
       <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRating">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/DeleteRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobRateInfoList">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetJobRateInfoList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
