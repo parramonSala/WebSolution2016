@@ -289,6 +289,7 @@
     </Content>
     <Content Include="Content\themes\default\custom.css" />
     <Content Include="favicon.ico" />
+    <Content Include="font-awesome.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />

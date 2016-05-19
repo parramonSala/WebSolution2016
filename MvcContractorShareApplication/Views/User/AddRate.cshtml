@@ -35,8 +35,6 @@
                             <fieldset>
 
                                 <div class="form-group">
-                                    <br />
-                                    <br />
                                     
                                    <!--  Hidden fields -->
                                     @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
@@ -47,14 +45,17 @@
                                     <h2>How was @Html.DisplayFor(model => model.ToUserName) ?</h2>
 
                                     <label>Rate</label>
-                                    <div class="row">
-		                            <h2>Working Star Ratings for Bootstrap 3 <small>Hover and click on a star</small></h2>
-	                                </div>
-                                    <div class="row lead">
-                                        <div id="hearts" class="starrr"></div>
-                                        You gave a rating of <span id="count">0</span> star(s)
-	                                </div>
-                                    <br />
+                                    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+                                    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                    <div class="rating-select">
+                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                    </div>
+
+                                    <br>
 
                                     <label>Comment</label>
                                     @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", id = "description" })
@@ -76,8 +77,34 @@
     </div>
 
 
+<script>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("star")
-}
+    $(function () {
+        $('.rating-select .btn').on('mouseover', function () {
+            $(this).removeClass('btn-default').addClass('btn-warning');
+            $(this).prevAll().removeClass('btn-default').addClass('btn-warning');
+            $(this).nextAll().removeClass('btn-warning').addClass('btn-default');
+        });
+
+        $('.rating-select').on('mouseleave', function () {
+            active = $(this).parent().find('.selected');
+            if (active.length) {
+                active.removeClass('btn-default').addClass('btn-warning');
+                active.prevAll().removeClass('btn-default').addClass('btn-warning');
+                active.nextAll().removeClass('btn-warning').addClass('btn-default');
+            } else {
+                $(this).find('.btn').removeClass('btn-warning').addClass('btn-default');
+            }
+        });
+
+        $('.rating-select .btn').click(function () {
+            if ($(this).hasClass('selected')) {
+                $('.rating-select .selected').removeClass('selected');
+            } else {
+                $('.rating-select .selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+    });
+
+    </script>

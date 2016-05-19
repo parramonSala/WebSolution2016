@@ -388,6 +388,17 @@ namespace MvcContractorShareApplication.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRate(Rate rate)
+        {
+            var rating = rate.Rating;
+
+            return View();
+
+        }
+
 
     }
 }
