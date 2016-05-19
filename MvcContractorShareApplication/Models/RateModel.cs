@@ -27,7 +27,7 @@ namespace MvcContractorShareApplication.Models
         public int ToUserId { get; set; }
         public int JobId { get; set; }
         public string ToUserName { get; set; }
-        public double Rating { get; set; }
+        public float Rating { get; set; }
         public string Comment { get; set; }
     }
 

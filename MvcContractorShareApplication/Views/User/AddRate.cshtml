@@ -40,6 +40,8 @@
                                     @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
                                     @Html.HiddenFor(m => m.FromUserId, new { @class = "form-control" })
                                     @Html.HiddenFor(m => m.ToUserId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.Rating)
+
                                     <!-- End Hidden fields -->
 
                                     <h2>How was @Html.DisplayFor(model => model.ToUserName) ?</h2>
@@ -48,11 +50,11 @@
                                     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
                                     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                                     <div class="rating-select">
-                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
-                                        <div class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star-empty"></span></div>
+                                        <div class="btn btn-default btn-sm"><span id="1" class="glyphicon glyphicon-star-empty" onclick="saveRating(this.id)"></span></div>
+                                        <div class="btn btn-default btn-sm"><span id="2" class="glyphicon glyphicon-star-empty" onclick="saveRating(this.id)"></span></div>
+                                        <div class="btn btn-default btn-sm"><span id="3" class="glyphicon glyphicon-star-empty" onclick="saveRating(this.id)"></span></div>
+                                        <div class="btn btn-default btn-sm"><span id="4" class="glyphicon glyphicon-star-empty" onclick="saveRating(this.id)"></span></div>
+                                        <div class="btn btn-default btn-sm"><span id="5" class="glyphicon glyphicon-star-empty" onclick="saveRating(this.id)"></span></div>
                                     </div>
 
                                     <br>
@@ -78,6 +80,10 @@
 
 
 <script>
+    function saveRating(clicked_id) {
+        document.getElementById('Rating').value = clicked_id;
+    }
+
 
     $(function () {
         $('.rating-select .btn').on('mouseover', function () {

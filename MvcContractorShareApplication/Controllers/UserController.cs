@@ -16,6 +16,8 @@ namespace MvcContractorShareApplication.Controllers
         ContractorShareServiceReference.ContractorShareClient ContractorShareService = new ContractorShareServiceReference.ContractorShareClient();
         ContractorShareServiceReference.UserInfo UserInfo = new ContractorShareServiceReference.UserInfo();
         ContractorShareServiceReference.UserFavourite UserFavourite = new ContractorShareServiceReference.UserFavourite();
+        ContractorShareServiceReference.Rate RateInfo = new ContractorShareServiceReference.Rate();
+
         protected HtmlInputFile myFile;
 
 
@@ -393,9 +395,21 @@ namespace MvcContractorShareApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddRate(Rate rate)
         {
-            var rating = rate.Rating;
+            RateInfo.FromUserId = rate.FromUserId;
+            RateInfo.ToUserId = rate.ToUserId;
+            RateInfo.ServiceId = rate.JobId;
+            if (rate.Rating == 0) RateInfo.Rating = 1;
+            else RateInfo.Rating = rate.Rating;
+            RateInfo.Comment = rate.Comment;
 
-            return View();
+            var result = ContractorShareService.AddRating(rate.ToUserId.ToString(), RateInfo);
+
+            if (result.message == "OK")
+            {
+                return RedirectToAction("RateJobsList","Home");
+            }
+
+            return View(rate);
 
         }
 
