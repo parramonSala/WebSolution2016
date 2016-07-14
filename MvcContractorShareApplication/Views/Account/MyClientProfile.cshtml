@@ -1,0 +1,63 @@
+﻿@model MvcContractorShareApplication.Models.ViewClientModel
+
+    <div class ="container">
+
+<div class="container" id ="profile">
+    <div class="row">
+        <div class="col-md-9 col-sm-12">
+            <br />
+            <div class="panel panel-default profile-panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 text-center" >
+                            <img class="img-circle user-image" src="../images/userprofile.png"  style="width:100%" >
+                        </div>
+                        <div class="col-sm-9 col-xs-12 user-info-box">
+                            <a class="btn btn-sm pull-right btn-primary" href='@Url.Action("EditClientProfile", "User", new { id=Model.userId })'>
+                                <i class="fa fa-edit"></i>
+                                Edit…
+                            </a>
+
+                            <h3 class="user-name">@Html.DisplayFor(model => model.Name)</h3>
+                      
+                            
+                            <figcaption class="ratings">
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                     <span class="fa fa-star-o"></span>
+                                </a> 
+                            </figcaption>    
+                            
+                            <br />
+                            <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p><strong><i class="fa fa-envelope"></i> E-mail: </strong><span class="user-email">@Html.DisplayFor(model => model.Email)</span></p>
+                                        <p><strong><i class="fa fa-phone-square"></i> Phone: </strong><span class="user-phone">@Html.DisplayFor(model => model.PhoneNumber)</span></p>
+                                        <p><strong><i class="fa fa-mobile-phone"></i> Mobile Phone: </strong><span class="user-admission-year">@Html.DisplayFor(model => model.MobileNumber)</span></p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p><strong><i class="fa fa-home"></i> Address: </strong><span class="user-course">@Html.DisplayFor(model => model.Address)</span></p>
+                                        <p><strong><i class="fa fa-envelope-o"></i> Postcode: </strong><span>@Html.DisplayFor(model => model.PostalCode)</span></p>
+                                        <p><strong><i class="fa fa-flag"></i> City: </strong><span>@Html.DisplayFor(model => model.City)</span></p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+                </div>
+
+        </div>

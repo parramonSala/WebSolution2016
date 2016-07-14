@@ -1,0 +1,35 @@
+﻿@model MvcContractorShareApplication.Models.Suggestion
+
+@using (Html.BeginForm("Manage", "Account")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <h2>Do you need help or have a suggestion?</h2>
+    
+    <h5>We love to hear your feedback and help you with any question you have</h5>
+                    <div class="col-md-3">
+		                <form role="form">
+                    <fieldset>
+        
+                 
+                  <div class="form-group">
+                       <!--  Hidden fields -->
+                       @Html.HiddenFor(m => m.helptab, new { @class = "form-control" })
+                      <br />
+                      <label>Question/Suggestion</label>
+                     <br />
+                    @Html.TextAreaFor(model => model.comment, new {rows="3", cols="40"})
+                    <br />
+                      </div> 
+                   
+        <input type="submit" value="Send" class="btn btn-primary btn-block btn-default">
+
+                             </fieldset>
+		                </form>
+	                </div>
+}
+
+
+<br /> <br /> <br /> <br /> <br />
+<br /> <br /> <br /> <br />
+ @Html.ActionLink("View my added suggestions","ListSuggestions", "Account")

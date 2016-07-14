@@ -116,4 +116,18 @@ namespace MvcContractorShareApplication.Models
         public bool showContactEmail { get; set; }
         public bool enableNotifications { get; set; }
     }
+
+    public class Suggestion
+    {
+        public bool helptab { get; set; }
+        public string comment { get; set; }
+        public DateTime Created { get; set; }
+    }
+
+    public class Bug
+    {
+        public bool issuetab { get; set; }
+        public string comment { get; set; }
+        public DateTime? Created { get; set; }
+    }
 }

@@ -6,7 +6,6 @@
       <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" />
       <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IContractorShare_Login_InputMessage">
@@ -333,6 +332,30 @@
   <wsdl:message name="IContractorShare_GetJobRateInfoList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetJobRateInfoListResponse" />
   </wsdl:message>
+  <wsdl:message name="IContractorShare_AddSuggestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSuggestion" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddSuggestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSuggestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddBug_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBug" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_AddBug_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBugResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ListSuggestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListSuggestions" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ListSuggestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListSuggestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ListBugs_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListBugs" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_ListBugs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListBugsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IContractorShare">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/Login" message="tns:IContractorShare_Login_InputMessage" />
@@ -549,6 +572,22 @@
     <wsdl:operation name="GetJobRateInfoList">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoList" message="tns:IContractorShare_GetJobRateInfoList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse" message="tns:IContractorShare_GetJobRateInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSuggestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddSuggestion" message="tns:IContractorShare_AddSuggestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddSuggestionResponse" message="tns:IContractorShare_AddSuggestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBug">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddBug" message="tns:IContractorShare_AddBug_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/AddBugResponse" message="tns:IContractorShare_AddBug_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListSuggestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ListSuggestions" message="tns:IContractorShare_ListSuggestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ListSuggestionsResponse" message="tns:IContractorShare_ListSuggestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListBugs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/ListBugs" message="tns:IContractorShare_ListBugs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/ListBugsResponse" message="tns:IContractorShare_ListBugs_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IContractorShare" type="tns:IContractorShare">
@@ -1032,6 +1071,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetJobRateInfoList">
       <soap:operation soapAction="http://tempuri.org/IContractorShare/GetJobRateInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSuggestion">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddSuggestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBug">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/AddBug" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSuggestions">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ListSuggestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListBugs">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/ListBugs" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -15,30 +15,9 @@ namespace MvcContractorShareApplication.Controllers
     {
         ContractorShareServiceReference.ContractorShareClient ContractorShareService = new ContractorShareServiceReference.ContractorShareClient();
         ContractorShareServiceReference.UserInfo UserInfo = new ContractorShareServiceReference.UserInfo();
-        ContractorShareServiceReference.UserFavourite UserFavourite = new ContractorShareServiceReference.UserFavourite();
         ContractorShareServiceReference.Rate RateInfo = new ContractorShareServiceReference.Rate();
 
         protected HtmlInputFile myFile;
-
-
-        public ActionResult MyClientProfile()
-        {
-            var myprofile = ContractorShareService.GetUserProfile(Session["userId"].ToString());
-
-            ViewClientModel model = new ViewClientModel();
-
-            model.userId = (int)Session["userId"];
-            model.Name = string.Concat(myprofile.Firstname, " ", myprofile.Surname);
-            model.Address = myprofile.Address;
-            model.City = string.Concat(myprofile.City, ", ", myprofile.Country);
-            model.Email = myprofile.Email;
-            model.PostalCode = myprofile.PostalCode;
-            model.Country = myprofile.Country;
-            model.PhoneNumber = myprofile.PhoneNumber.ToString();
-            model.MobileNumber = myprofile.MobileNumber.ToString();
-
-            return View(model);
-        }
 
         public ActionResult EditClientProfile(int id)
         {
@@ -95,7 +74,7 @@ namespace MvcContractorShareApplication.Controllers
 
                 if (result == "OK")
                 {
-                    return RedirectToAction("MyClientProfile", "User");
+                    return RedirectToAction("Manage", "Account");
                 }
                 else
                 {
@@ -105,6 +84,25 @@ namespace MvcContractorShareApplication.Controllers
             }
             ModelState.AddModelError("", "Some of the data entered is incorrect. Please try again");
             return View(viewModel);
+        }
+
+        public ActionResult ClientProfile(int id)
+        {
+            var myprofile = ContractorShareService.GetUserProfile(id.ToString());
+
+            ViewClientModel model = new ViewClientModel();
+
+            model.userId = (int)Session["userId"];
+            model.Name = string.Concat(myprofile.Firstname, " ", myprofile.Surname);
+            model.Address = myprofile.Address;
+            model.City = string.Concat(myprofile.City, ", ", myprofile.Country);
+            model.Email = myprofile.Email;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+
+            return PartialView("ClientProfile", model);
         }
 
         public ActionResult MyContractorProfile()
@@ -117,7 +115,7 @@ namespace MvcContractorShareApplication.Controllers
                     });
         }
 
-        public ActionResult ContractorProfile(int id)
+        public ActionResult ContractorProfile(int id, string activetab = "home")
         {
             var myprofile = ContractorShareService.GetUserProfile(id.ToString());
 
@@ -157,6 +155,10 @@ namespace MvcContractorShareApplication.Controllers
             model.NumOfRates = myprofile.NumOfRates;
             model.IsFavourite = userisfavourite;
             model.IsBlocked = userisblocked;
+
+            model.Comments = GetUserComments(id);
+
+            ViewBag.Active = activetab;
 
             return View(model);
         }
@@ -332,6 +334,46 @@ namespace MvcContractorShareApplication.Controllers
             });
         }
 
+        public ActionResult FavouritesList()
+        {
+            IEnumerable<MvcContractorShareApplication.Models.Contractor> contractors = new List<Contractor>();
+
+            var contractorlist = ContractorShareService.GetUserFavourites(Session["userId"].ToString());
+
+            List<Contractor> contractorslist = new List<Contractor>();
+
+            if (contractorlist != null)
+            {
+                foreach (var s in contractorlist)
+                {
+                    Contractor contractor = new Contractor();
+                    contractor.CompanyName = s.CompanyName;
+                    contractor.Address = s.Address;
+                    contractor.PostalCode = s.PostalCode;
+                    contractor.City = s.City;
+
+                    //list of categories
+                    contractor.CategoriesList = new List<string>();
+
+                    foreach (var category in s.Categories.ToList())
+                    {
+                        ServiceCategoryEnum categoryenum = (ServiceCategoryEnum)category;
+                        string categoryname = EnumHelper.GetDescription(categoryenum);
+                        contractor.CategoriesList.Add(categoryname);
+                    }
+
+                    contractor.PricePerHour = s.PricePerHour;
+                    contractor.AverageRate = s.AverageRate;
+
+                    contractorslist.Add(contractor);
+                }
+
+                contractors = (IEnumerable<Contractor>)contractorslist;
+            }
+
+            return View(contractors);
+        }
+
         public ActionResult BlockUser(int id)
         {
             string fromuser = Session["userId"].ToString();
@@ -413,6 +455,54 @@ namespace MvcContractorShareApplication.Controllers
 
         }
 
+        public ActionResult DeleteRating(int id, int ToUserId)
+        {
+            //Call DeleteRating function for Rating with Id = id
 
+            var result = ContractorShareService.DeleteRating(ToUserId.ToString(),id.ToString());
+
+            if (result.message == "OK")
+            {
+                return RedirectToAction("ContractorProfile", new
+                {
+                    id = ToUserId,
+                    activetab = "messages"
+                });
+            }
+            else
+            {
+                ModelState.AddModelError("", result.message);
+                return RedirectToAction("ContractorProfile", new
+                {
+                    id = ToUserId,
+                    activetab = "messages"
+                });
+            }
+        }
+
+        private List<UserComment> GetUserComments(int ToUserId)
+        {
+            var comments = ContractorShareService.GetUserRates(ToUserId.ToString());
+
+            List<UserComment> usercomments = new List<UserComment>();
+
+            foreach (var comment in comments)
+            {
+                UserComment usercomment = new UserComment();
+                usercomment.CommentId = comment.RateId;
+                usercomment.FromUserId = comment.FromUserId;
+                usercomment.ToUserId = comment.ToUserId;
+                usercomment.comment = comment.Comment;
+                usercomment.Created = comment.Created;
+                usercomment.Rating = comment.Rating;
+
+                var fromuserprofile = ContractorShareService.GetUserProfile(comment.FromUserId.ToString());
+                usercomment.FromUserName = String.Concat(fromuserprofile.Firstname, " ", fromuserprofile.Surname);
+
+                usercomments.Add(usercomment);
+            }
+
+            return usercomments;
+        }
     }
 }

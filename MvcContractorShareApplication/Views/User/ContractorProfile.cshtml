@@ -1,7 +1,7 @@
 ﻿@model MvcContractorShareApplication.Models.ViewContractorModel
 
 @{
-    ViewBag.Title = "MyClientProfile";
+    ViewBag.Title = "ContractorProfile";
 }
 
 @Html.Partial("_NavBar")
@@ -131,7 +131,7 @@
           </ul>
               
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane" id="home">
                 <div class="row">
                     <div class="panel aboutus">
                         <div class="panel-body">
@@ -184,12 +184,81 @@
              </div>
              </div><!--/tab-pane-->
 
-             <div class="tab-pane" id="messages">
-               <h2></h2>
-               <ul class="list-group">
-                  <li class="list-group-item text-right"><a href="#" class="pull-left">Test..</a> 2.13.2014</li>
-                </ul> 
-             </div><!--/tab-pane-->
+              <div class="tab-pane" id="messages">
+                <ul class="list-group">  
+                    <div class="well">
+                        
+                        <hr data-brackets-id="12673">
+                        <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+                        
+                           @foreach (var item in Model.Comments) {
+                                <!--  Hidden fields -->
+                                    @Html.HiddenFor(model => item.CommentId, new { @class = "form-control" })
+                                <!-- End Hidden fields -->
+                               <strong class="pull-left primary-font">From @Html.DisplayFor(model => item.FromUserName)</strong>
+                               <br />
+                               <figcaption class="ratings">
+                                @for(var i=0; i<5; i++){ 
+                                    if(i< item.Rating){ 
+                                        <a href="#">
+                                            <span class="fa fa-star"></span>
+                                        </a>
+                                     } 
+                                     else { 
+                                        <a href="#">
+                                            <span class="fa fa-star-o"></span>
+                                        </a> 
+                                     } 
+                                 }
+                            </figcaption>  
+                               
+                               <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span> @Html.DisplayFor(model => item.Created)    
+                                    @if ((Session["userId"]).ToString() == item.FromUserId.ToString())
+                                     {
+                                        <a role="button" class="close" aria-hidden="true" data-toggle="modal" data-target="#@item.CommentId">&times;</a>
+                                     }
+                                </small>
+                               
+                                <!-- Modal HTML -->
+                               <div class="modal fade" id="@item.CommentId" tabindex="-1" role="dialog"  aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h3 class="modal-title">Confirmation</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this comment?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                    <!--  Hidden fields -->
+                                                    @Html.HiddenFor(m => m.userId, new { @class = "form-control" })
+
+                                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                
+                                                    @Html.ActionLink(
+                                                        "Delete", 
+                                                        "DeleteRating", 
+                                                        "User", 
+                                                        new { id = item.CommentId, ToUserId = item.ToUserId }, 
+                                                        new { @class = "btn btn-primary"})
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <br />
+                                <li class="ui-state-default">>@Html.DisplayFor(model => item.comment)</li>
+                                <br />
+                           }
+
+                        </ul>
+                </div>
+
+               </ul> 
+
              
           </div><!--/tab-pane-->
 
@@ -201,4 +270,16 @@
 
         </div>
 
-    
+@{
+    string activeTab = ViewBag.Active.ToString(); 
+}
+
+@section scripts{
+ 
+    <script>
+        $(function () {
+            var selector = '@activeTab';
+            $("#" + selector).addClass("active");
+        });
+    </script>
+}

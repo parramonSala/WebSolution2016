@@ -403,9 +403,6 @@
     <Content Include="Service References\ContractorShareServiceReference\MvcContractorShareApplication.ContractorShareServiceReference.Rate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ContractorShareServiceReference\MvcContractorShareApplication.ContractorShareServiceReference.UserFavourite.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\ContractorShareServiceReference\MvcContractorShareApplication.ContractorShareServiceReference.UserInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -443,6 +440,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ContractorShareServiceReference\MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ContractorShareServiceReference\MvcContractorShareApplication.ContractorShareServiceReference.IssueInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ContractorShareServiceReference\Reference.svcmap">
@@ -505,9 +505,6 @@
     <None Include="Service References\ContractorShareServiceReference\ContractorShare1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ContractorShareServiceReference\ContractorShare2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ContractorShareServiceReference\ContractorShare3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -527,7 +524,7 @@
     <Content Include="Views\Home\ContractorMyJobs.cshtml" />
     <Content Include="Views\Home\ContractorMyClosedJobs.cshtml" />
     <Content Include="Views\Home\FindJobs.cshtml" />
-    <Content Include="Views\User\MyClientProfile.cshtml" />
+    <Content Include="Views\Account\MyClientProfile.cshtml" />
     <Content Include="Views\User\EditClientProfile.cshtml" />
     <Content Include="Views\User\MyContractorProfile.cshtml" />
     <Content Include="Views\User\EditContractorProfile.cshtml" />
@@ -549,6 +546,9 @@
     <Content Include="Views\Home\ViewTask.cshtml" />
     <Content Include="Views\Home\CreateTask.cshtml" />
     <Content Include="Views\Home\EditTask.cshtml" />
+    <Content Include="Views\Account\_Help.cshtml" />
+    <Content Include="Views\Account\_NotifyIssue.cshtml" />
+    <Content Include="Views\Account\_ListBugsPartial.cshtml" />
     <None Include="Views\Home\ChangeTaskStatus.cshtml" />
     <Content Include="Views\User\ContractorSearch.cshtml" />
     <Content Include="Views\User\ContractorProfile.cshtml" />
@@ -556,6 +556,8 @@
     <Content Include="Views\Home\CompleteJob.cshtml" />
     <Content Include="Views\Home\RateJobsList.cshtml" />
     <Content Include="Views\User\AddRate.cshtml" />
+    <Content Include="Views\User\ClientProfile.cshtml" />
+    <Content Include="Views\User\FavouritesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

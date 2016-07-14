@@ -14,22 +14,61 @@
 
 <div class="col-md-3">
   <ul class="nav nav-pills nav-stacked">
-    <li class="active"><a href="#settings" data-toggle="pill"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
-    <li><a href="#changepassword" data-toggle="pill"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+       @if (Convert.ToInt32(Session["usertype"]) == 1) {
+           <li class="active"><a href="#myprofile" data-toggle="pill"><i class="fa fa-user fa-fw"></i>Profile</a></li>
+           <li><a href="#settings" data-toggle="pill"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+       }
+       else
+       {
+           <li class="active"><a href="#settings" data-toggle="pill"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+       }
+           <li><a href="#changepassword" data-toggle="pill"><i class="fa fa-lock fa-fw"></i>Change Password</a></li>
+           <li><a href="#help" data-toggle="pill"><i class="fa fa-question-circle fa-fw"></i>Help/Suggestions</a></li>
+           <li><a href="#issue" data-toggle="pill"><i class="fa fa-bug fa-fw"></i>Notify an issue</a></li>
   </ul>
 </div>
 
 <div class="col-md-9">
     <div class="tab-content">
-      <div id="settings" class="tab-pane fade in active">
+       @* If client, the profile will be shown in settings *@
+       @if (Convert.ToInt32(Session["usertype"]) == 1)
+       { 
+            <div id="myprofile" class="tab-pane fade in active">
+                <p class="message-success">@ViewBag.StatusMessage</p>
+                @Html.Action("MyProfile")
+            </div>
+          
+           <div id="settings" class="tab-pane fade">
             <p class="message-success">@ViewBag.StatusMessage</p>
 
             @Html.Action("ChangeUserPreferences")
-      </div>
+            </div>
+       }
+       else
+       {
+              <div id="settings" class="tab-pane fade in active">
+                    <p class="message-success">@ViewBag.StatusMessage</p>
+
+                    @Html.Action("ChangeUserPreferences")
+              </div>
+       }
+
       <div id="changepassword" class="tab-pane fade">
             <p class="message-success">@ViewBag.StatusMessage</p>
 
             @Html.Partial("_ChangePasswordPartial")
+            
+      </div>
+      <div id="help" class="tab-pane fade">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+            @Html.Action("Help")
+            
+      </div>
+        <div id="issue" class="tab-pane fade">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+
+             @Html.Action("Issue")
             
       </div>
     </div>

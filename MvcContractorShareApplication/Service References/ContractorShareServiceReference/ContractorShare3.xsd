@@ -256,7 +256,9 @@
   <xs:complexType name="Rate">
     <xs:sequence>
       <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FromUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="RateId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Rating" type="xs:float" />
       <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
@@ -289,4 +291,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JobRateInfo" nillable="true" type="tns:JobRateInfo" />
+  <xs:complexType name="ArrayOfIssueInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IssueInfo" nillable="true" type="tns:IssueInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIssueInfo" nillable="true" type="tns:ArrayOfIssueInfo" />
+  <xs:complexType name="IssueInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="IssueId" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IssueInfo" nillable="true" type="tns:IssueInfo" />
 </xs:schema>

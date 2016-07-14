@@ -18,6 +18,7 @@ namespace MvcContractorShareApplication.Models
 
         public bool Active { get; set; }
         public string Message { get; set; }
+        [DataType(DataType.Date)]
         public DateTime ProposedTime { get; set; }
         public decimal AproxDuration { get; set; }
         public decimal ProposedPrice { get; set; }
@@ -46,6 +47,7 @@ namespace MvcContractorShareApplication.Models
         [Required]
         public string Message { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime ProposedTime { get; set; }
         public decimal AproxDuration { get; set; }
         public decimal ProposedPrice { get; set; }

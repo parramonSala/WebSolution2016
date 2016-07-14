@@ -1,7 +1,7 @@
 ﻿@model MvcContractorShareApplication.Models.ViewClientModel
 
 @{
-    ViewBag.Title = "MyClientProfile";
+    ViewBag.Title = "ClientProfile";
 }
 
 @Html.Partial("_NavBar")
@@ -10,7 +10,7 @@
 
 <div class="jumbotron jumbotron-special-short">
         <div class="container" >
-            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">My Profile</h2>
+            <h2 style="font-family:Calibri; font-size:24px; font-weight:bold">@Html.DisplayFor(model=> model.PageTitle)</h2>
     </div>
 </div>  
 }

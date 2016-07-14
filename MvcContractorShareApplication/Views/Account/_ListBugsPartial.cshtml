@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MvcContractorShareApplication.Models.Bug>
+
+@{
+    ViewBag.Title = "Bugs";
+}
+
+    @Html.Partial("_NavBar")
+
+@section featured {
+
+<div class="jumbotron jumbotron-special-short">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Added Bugs</h2>
+    </div>
+    }
+
+    <br />
+
+  <table class="table table-striped" id="myjobstable">
+
+@foreach (var item in Model) {
+    
+    <tr>
+        <td width="80%">
+            @Html.DisplayFor(modelItem => item.comment)
+        </td>
+        <td width="20%">
+            @Html.DisplayFor(modelItem => item.Created)
+         </td>
+    </tr>
+    
+}
+</table>

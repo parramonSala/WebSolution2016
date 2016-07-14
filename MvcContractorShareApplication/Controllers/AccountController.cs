@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using MvcContractorShareApplication.Filters;
 using MvcContractorShareApplication.Models;
+using MvcContractorShareApplication.Enumerations;
 
 namespace MvcContractorShareApplication.Controllers
 {
@@ -343,13 +344,71 @@ namespace MvcContractorShareApplication.Controllers
             return PartialView("_UserPreferencesPartial", userpreferencesmodel);
         }
 
+        [ChildActionOnly]
+        public ActionResult MyProfile()
+        {
+            var myprofile = ContractorShareService.GetUserProfile(Session["userId"].ToString());
 
+            ViewClientModel model = new ViewClientModel();
+
+            model.userId = (int)Session["userId"];
+            model.Name = string.Concat(myprofile.Firstname, " ", myprofile.Surname);
+            model.Address = myprofile.Address;
+            model.City = string.Concat(myprofile.City, ", ", myprofile.Country);
+            model.Email = myprofile.Email;
+            model.PostalCode = myprofile.PostalCode;
+            model.Country = myprofile.Country;
+            model.PhoneNumber = myprofile.PhoneNumber.ToString();
+            model.MobileNumber = myprofile.MobileNumber.ToString();
+
+            return PartialView("MyClientProfile", model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Help()
+        {
+            Suggestion helpmodel = new Suggestion();
+
+            helpmodel.helptab = true;
+            return PartialView("_Help", helpmodel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Issue()
+        {
+            Bug issuemodel = new Bug();
+
+            issuemodel.issuetab = true;
+            return PartialView("_NotifyIssue", issuemodel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ListBugs()
+        {
+            IEnumerable<MvcContractorShareApplication.Models.Bug> bugs = new List<Bug>();
+
+            var bugsinfolist = ContractorShareService.ListBugs(Session["userId"].ToString());
+
+            List<Bug> bugslist = new List<Bug>();
+
+            foreach (var b in bugsinfolist)
+            {
+                Bug bug = new Bug();
+                bug.Created = b.Created;
+                bug.comment = b.Message;
+
+                bugslist.Add(bug);
+            }
+
+            bugs = (IEnumerable<Bug>)bugslist;
+            return PartialView("_ListBugsPartial", bugs);
+        }
 
         //
         // POST: /Account/Manage
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model, UserPreferences userpreferencesmodel)
+        public ActionResult Manage(LocalPasswordModel model, UserPreferences userpreferencesmodel, Suggestion helpmodel, Bug issuemodel)
         {
             //if user has submitted the user preferences changes
             if (userpreferencesmodel.preferencestab)
@@ -367,6 +426,34 @@ namespace MvcContractorShareApplication.Controllers
                 else
                 {
                     ModelState.AddModelError("", result);
+                    return View(model);
+                }
+            }
+            else if (helpmodel.helptab)
+            {
+                string comment = helpmodel.comment;
+                var result = ContractorShareService.AddSuggestion(Session["userId"].ToString(),comment);
+                if (result.message == "OK")
+                {
+                    return View();
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.message);
+                    return View(model);
+                }
+            }
+            else if (issuemodel.issuetab)
+            {
+                string comment = issuemodel.comment;
+                var result = ContractorShareService.AddBug(Session["userId"].ToString(), comment);
+                if (result.message == "OK")
+                {
+                    return View();
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.message);
                     return View(model);
                 }
             }

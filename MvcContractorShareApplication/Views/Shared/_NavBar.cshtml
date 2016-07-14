@@ -29,10 +29,11 @@
                     <li class="@ActiveItem("Post New Job", "Home", null)">@Html.ActionLink("Post new Job", "PostNewJob", "Home")</li>
                     <li class="@ActiveItem("My Jobs", "Home", null)">@Html.ActionLink("My Jobs", "MyJobs", "Home")</li>
                     <li class="@ActiveItem("Find Contractors", "Home", null)">@Html.ActionLink("Find Contractors", "ContractorSearch", "User")</li>
-                    <li class="@ActiveItem("My Profile", "Home", null)">@Html.ActionLink("My Profile", "MyClientProfile", "User")</li>
                     <li class="@ActiveItem("Proposals", "Proposal", null)">@Html.ActionLink("Proposals", "MyProposals", "Proposal")</li>                    
                     <li class="@ActiveItem("Appointments", "Appointment", null)">@Html.ActionLink("Appointments", "MyActiveAppointments", "Appointment")</li>                    
-                    <li class="@ActiveItem("RateJobs", "Home", null)">@Html.ActionLink("Ratings", "RateJobsList", "Home")</li>                                  
+                    <li class="@ActiveItem("RateJobs", "Home", null)">@Html.ActionLink("Ratings", "RateJobsList", "Home")</li>    
+                    <li class="@ActiveItem("Favourites", "Home", null)">@Html.ActionLink("Favourites", "FavouritesList", "User")</li>
+                              
                 }
                 else if (Convert.ToInt32(Session["usertype"]) == 2)
                 {

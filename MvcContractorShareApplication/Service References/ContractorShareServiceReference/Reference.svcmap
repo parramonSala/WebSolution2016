@@ -26,7 +26,6 @@
     <MetadataFile FileName="ContractorShare1.xsd" MetadataType="Schema" ID="171c6601-df6c-4290-8e8c-69daf100fc6f" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd1" />
     <MetadataFile FileName="ContractorShare.wsdl" MetadataType="Wsdl" ID="d8d9bed1-ccbe-4f13-b454-63a660cd7e2f" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?wsdl" />
     <MetadataFile FileName="ContractorShare.disco" MetadataType="Disco" ID="9f3bb2e9-fb5e-4cfd-8e64-e60a6c0d22d3" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?disco" />
-    <MetadataFile FileName="ContractorShare2.xsd" MetadataType="Schema" ID="1c34725a-29be-4058-a0bb-8ae15f320a91" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd4" />
     <MetadataFile FileName="ContractorShare3.xsd" MetadataType="Schema" ID="a4a90eda-2cdd-48a9-afc7-8062863b82e8" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd2" />
     <MetadataFile FileName="ContractorShare4.xsd" MetadataType="Schema" ID="40387ac8-e4be-40b5-ba22-e16c3b279288" SourceId="1" SourceUrl="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd3" />
   </Metadata>

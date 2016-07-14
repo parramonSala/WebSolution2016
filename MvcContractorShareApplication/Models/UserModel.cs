@@ -22,6 +22,17 @@ namespace MvcContractorShareApplication.Models
         public string Surname { get; set; }
     }
 
+    public class UserComment
+    {
+        public int? CommentId { get; set; }
+        public int? FromUserId { get; set; }
+        public int? ToUserId { get; set; }
+        public string FromUserName { get; set; }
+        public string comment { get; set; }
+        public double Rating { get; set; }
+        public DateTime? Created { get; set; }
+    }
+
     public class Contractor
     {
         public class Category
@@ -96,6 +107,8 @@ namespace MvcContractorShareApplication.Models
         public int? NumOfRates { get; set; }
         public bool IsFavourite { get; set; }
         public bool IsBlocked { get; set; }
+
+        public List<UserComment> Comments { get; set; }
     }
 
     public class SearchContractorModel
@@ -132,4 +145,5 @@ namespace MvcContractorShareApplication.Models
         public string Comment { get; set; }
         
     }
+
 }

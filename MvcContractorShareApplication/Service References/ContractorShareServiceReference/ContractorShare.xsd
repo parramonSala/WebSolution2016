@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" />
-  <xs:import schemaLocation="http://contractorshare.apphb.com/ContractorShare.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ContractorShareService" />
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -188,7 +187,7 @@
   <xs:element name="GetUserFavouritesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ContractorShareService" minOccurs="0" name="GetUserFavouritesResult" nillable="true" type="q13:ArrayOfUserFavourite" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="GetUserFavouritesResult" nillable="true" type="q13:ArrayOfContractorInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -789,6 +788,64 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="GetJobRateInfoListResult" nillable="true" type="q59:ArrayOfJobRateInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSuggestion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSuggestionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddSuggestionResult" nillable="true" type="q60:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBug">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBugResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddBugResult" nillable="true" type="q61:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSuggestions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListSuggestionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListSuggestionsResult" nillable="true" type="q62:ArrayOfIssueInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListBugs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListBugsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListBugsResult" nillable="true" type="q63:ArrayOfIssueInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
