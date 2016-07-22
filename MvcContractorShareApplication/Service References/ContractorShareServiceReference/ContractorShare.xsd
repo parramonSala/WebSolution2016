@@ -791,6 +791,66 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="eventinfo" nillable="true" type="q60:EventInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="CreateEventResult" nillable="true" type="q61:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eventId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="eventinfo" nillable="true" type="q62:EventInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="EditEventResult" nillable="true" type="q63:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eventId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="DeleteEventResult" nillable="true" type="q64:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="GetUserEventsResult" nillable="true" type="q65:ArrayOfEventInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddSuggestion">
     <xs:complexType>
       <xs:sequence>
@@ -802,7 +862,7 @@
   <xs:element name="AddSuggestionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddSuggestionResult" nillable="true" type="q60:Result" />
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddSuggestionResult" nillable="true" type="q66:Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -817,7 +877,7 @@
   <xs:element name="AddBugResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddBugResult" nillable="true" type="q61:Result" />
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="AddBugResult" nillable="true" type="q67:Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -831,7 +891,7 @@
   <xs:element name="ListSuggestionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListSuggestionsResult" nillable="true" type="q62:ArrayOfIssueInfo" />
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListSuggestionsResult" nillable="true" type="q68:ArrayOfIssueInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -845,7 +905,7 @@
   <xs:element name="ListBugsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListBugsResult" nillable="true" type="q63:ArrayOfIssueInfo" />
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain" minOccurs="0" name="ListBugsResult" nillable="true" type="q69:ArrayOfIssueInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

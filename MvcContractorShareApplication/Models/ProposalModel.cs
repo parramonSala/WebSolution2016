@@ -25,6 +25,12 @@ namespace MvcContractorShareApplication.Models
         public DateTime? Created { get; set; }
     }
 
+    public class SelectJob
+    {
+        public int JobId { get; set; }
+        public string JobName { get; set; }
+    }
+
     public class Message
     {
         public int messageId { get; set; }
@@ -42,7 +48,10 @@ namespace MvcContractorShareApplication.Models
         public int JobId { get; set; }
         public int FromUserId { get; set; }
         public int ToUserId { get; set; }
+        public string ToUserName { get; set; }
         public string JobName { get; set; }
+        public int SelectedJobId { get; set; }
+        public IEnumerable<SelectJob> JobsList { get; set; }
 
         [Required]
         public string Message { get; set; }

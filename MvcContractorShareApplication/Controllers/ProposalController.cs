@@ -35,6 +35,37 @@ namespace MvcContractorShareApplication.Controllers
             return View(model);
         }
 
+        public ActionResult CreateNewProposal_Client(int id)
+        {
+            var model = new CreateProposalModel();
+
+            var contractor = ContractorShareService.GetUserProfile(id.ToString());
+
+            model.ToUserId = id;
+            model.ToUserName = contractor.CompanyName;
+
+            
+            IEnumerable<SelectJob> jobs = new List<SelectJob>();
+
+             var myservices = ContractorShareService.GetMyCurrentServices(Session["userId"].ToString());
+
+            List<SelectJob> jobslist = new List<SelectJob>();
+
+            foreach (var s in myservices)
+            {
+                SelectJob job = new SelectJob();
+
+                job.JobName = s.Name;
+                job.JobId = s.Id;
+
+                jobslist.Add(job);
+            }
+
+            model.JobsList = jobslist;
+
+            return View(model);
+        }
+
         //Post New Job- Post Action
         [HttpPost]
         [AllowAnonymous]
@@ -70,6 +101,41 @@ namespace MvcContractorShareApplication.Controllers
             ModelState.AddModelError("", "Some of the data entered is incorrect. Please try again");
             return View(model);
         }
+
+        //Post New Job- Post Action
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNewProposal_Client(CreateProposalModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                proposalinfo.Active = true;
+                proposalinfo.JobId = model.SelectedJobId;
+                proposalinfo.ToUserId = model.ToUserId;
+                proposalinfo.FromUserId = (int)Session["userId"];
+                proposalinfo.StatusId = (int)(int)ProposalStatusEnum.Open;
+                proposalinfo.Message = model.Message;
+                proposalinfo.ProposedTime = (DateTime)model.ProposedTime;
+
+                var result = ContractorShareService.CreateProposal(proposalinfo);
+
+                if (result.message == "OK")
+                {
+                    return RedirectToAction("MyProposals", "Proposal");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.message);
+                    return View(model);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "Some of the data entered is incorrect. Please try again");
+            return View(model);
+        }
+
 
 
         public ActionResult MyProposals()

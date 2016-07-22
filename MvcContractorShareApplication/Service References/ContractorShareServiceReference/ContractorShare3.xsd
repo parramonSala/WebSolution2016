@@ -291,6 +291,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JobRateInfo" nillable="true" type="tns:JobRateInfo" />
+  <xs:complexType name="EventInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppointmentId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="End_Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Start_Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventInfo" nillable="true" type="tns:EventInfo" />
+  <xs:complexType name="ArrayOfEventInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EventInfo" nillable="true" type="tns:EventInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEventInfo" nillable="true" type="tns:ArrayOfEventInfo" />
   <xs:complexType name="ArrayOfIssueInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="IssueInfo" nillable="true" type="tns:IssueInfo" />

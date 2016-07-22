@@ -42,8 +42,9 @@
                     <li class="@ActiveItem("My Jobs", "Home", null)">@Html.ActionLink("My Profile", "MyContractorProfile", "User")</li>
                     <li class="@ActiveItem("Proposals", "Proposal", null)">@Html.ActionLink("Proposals", "MyProposals", "Proposal")</li>
                     <li class="@ActiveItem("Appointments", "Appointment", null)">@Html.ActionLink("Appointments", "MyActiveAppointments", "Appointment")</li>                    
-
+                    <li class="@ActiveItem("Calendar", "Calendar", null)">@Html.ActionLink("My Calendar", "Calendar", "Calendar", new { id= Convert.ToInt32(Session["userId"])}, null )</li>                    
                 }
+                
                 else
                 {
                     <li class="@ActiveItem("Index", "Home", null)">@Html.ActionLink("Home", "Index", "Home")</li>

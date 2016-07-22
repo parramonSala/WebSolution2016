@@ -42,6 +42,8 @@
                                         <i class="fa fa-heart-o"></i> Add Favourite
                                     </a>
                                 }
+                                
+                                
                             }
 
                         </div>
@@ -79,6 +81,9 @@
                                 }
 
                                     <li><a href='@Url.Action("DenounceUser", "User", new { id= Model.userId })'><i class="fa fa-exclamation"></i> Denounce</a></li>      
+
+                                    
+                                    <li><a href='@Url.Action("CreateNewProposal_Client", "Proposal", new { id= Model.userId })'><i class="fa fa-pencil"></i> Create New Proposal</a></li>      
 
                                     </ul>
 							    </div>

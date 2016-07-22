@@ -154,3 +154,9 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+MvcContractorShareApplication/App_Data/aspnet-MvcContractorShareApplication-20150606125931.mdf
+*.mdf
+MvcContractorShareApplication/App_Data/aspnet-MvcContractorShareApplication-20150606125931_log.ldf
+*.mdf
+*.mdf
+MvcContractorShareApplication/App_Data/aspnet-MvcContractorShareApplication-20150606125931_log.ldf

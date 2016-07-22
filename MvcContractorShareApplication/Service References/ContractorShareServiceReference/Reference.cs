@@ -2756,6 +2756,131 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EventInfo", Namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain")]
+    [System.SerializableAttribute()]
+    public partial class EventInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AppointmentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime End_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EventIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime Start_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AppointmentId {
+            get {
+                return this.AppointmentIdField;
+            }
+            set {
+                if ((this.AppointmentIdField.Equals(value) != true)) {
+                    this.AppointmentIdField = value;
+                    this.RaisePropertyChanged("AppointmentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime End_Date {
+            get {
+                return this.End_DateField;
+            }
+            set {
+                if ((this.End_DateField.Equals(value) != true)) {
+                    this.End_DateField = value;
+                    this.RaisePropertyChanged("End_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EventId {
+            get {
+                return this.EventIdField;
+            }
+            set {
+                if ((this.EventIdField.Equals(value) != true)) {
+                    this.EventIdField = value;
+                    this.RaisePropertyChanged("EventId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Start_Date {
+            get {
+                return this.Start_DateField;
+            }
+            set {
+                if ((this.Start_DateField.Equals(value) != true)) {
+                    this.Start_DateField = value;
+                    this.RaisePropertyChanged("Start_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="IssueInfo", Namespace="http://schemas.datacontract.org/2004/07/ContractorShareService.Domain")]
     [System.SerializableAttribute()]
     public partial class IssueInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3174,6 +3299,30 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetJobRateInfoList", ReplyAction="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse")]
         System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[]> GetJobRateInfoListAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/CreateEvent", ReplyAction="http://tempuri.org/IContractorShare/CreateEventResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.Result CreateEvent(string userId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/CreateEvent", ReplyAction="http://tempuri.org/IContractorShare/CreateEventResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> CreateEventAsync(string userId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/EditEvent", ReplyAction="http://tempuri.org/IContractorShare/EditEventResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.Result EditEvent(string userId, string eventId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/EditEvent", ReplyAction="http://tempuri.org/IContractorShare/EditEventResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> EditEventAsync(string userId, string eventId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/DeleteEvent", ReplyAction="http://tempuri.org/IContractorShare/DeleteEventResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.Result DeleteEvent(string userId, string eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/DeleteEvent", ReplyAction="http://tempuri.org/IContractorShare/DeleteEventResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> DeleteEventAsync(string userId, string eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetUserEvents", ReplyAction="http://tempuri.org/IContractorShare/GetUserEventsResponse")]
+        MvcContractorShareApplication.ContractorShareServiceReference.EventInfo[] GetUserEvents(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/GetUserEvents", ReplyAction="http://tempuri.org/IContractorShare/GetUserEventsResponse")]
+        System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.EventInfo[]> GetUserEventsAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IContractorShare/AddSuggestion", ReplyAction="http://tempuri.org/IContractorShare/AddSuggestionResponse")]
         MvcContractorShareApplication.ContractorShareServiceReference.Result AddSuggestion(string userId, string comment);
@@ -3657,6 +3806,38 @@ namespace MvcContractorShareApplication.ContractorShareServiceReference {
         
         public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.JobRateInfo[]> GetJobRateInfoListAsync(string userId) {
             return base.Channel.GetJobRateInfoListAsync(userId);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result CreateEvent(string userId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo) {
+            return base.Channel.CreateEvent(userId, eventinfo);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> CreateEventAsync(string userId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo) {
+            return base.Channel.CreateEventAsync(userId, eventinfo);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result EditEvent(string userId, string eventId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo) {
+            return base.Channel.EditEvent(userId, eventId, eventinfo);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> EditEventAsync(string userId, string eventId, MvcContractorShareApplication.ContractorShareServiceReference.EventInfo eventinfo) {
+            return base.Channel.EditEventAsync(userId, eventId, eventinfo);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.Result DeleteEvent(string userId, string eventId) {
+            return base.Channel.DeleteEvent(userId, eventId);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.Result> DeleteEventAsync(string userId, string eventId) {
+            return base.Channel.DeleteEventAsync(userId, eventId);
+        }
+        
+        public MvcContractorShareApplication.ContractorShareServiceReference.EventInfo[] GetUserEvents(string userId) {
+            return base.Channel.GetUserEvents(userId);
+        }
+        
+        public System.Threading.Tasks.Task<MvcContractorShareApplication.ContractorShareServiceReference.EventInfo[]> GetUserEventsAsync(string userId) {
+            return base.Channel.GetUserEventsAsync(userId);
         }
         
         public MvcContractorShareApplication.ContractorShareServiceReference.Result AddSuggestion(string userId, string comment) {

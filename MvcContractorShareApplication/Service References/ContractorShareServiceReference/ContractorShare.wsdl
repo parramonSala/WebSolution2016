@@ -332,6 +332,30 @@
   <wsdl:message name="IContractorShare_GetJobRateInfoList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetJobRateInfoListResponse" />
   </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEvent" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_CreateEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditEvent" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_EditEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvent" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_DeleteEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserEvents" />
+  </wsdl:message>
+  <wsdl:message name="IContractorShare_GetUserEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserEventsResponse" />
+  </wsdl:message>
   <wsdl:message name="IContractorShare_AddSuggestion_InputMessage">
     <wsdl:part name="parameters" element="tns:AddSuggestion" />
   </wsdl:message>
@@ -572,6 +596,22 @@
     <wsdl:operation name="GetJobRateInfoList">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoList" message="tns:IContractorShare_GetJobRateInfoList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetJobRateInfoListResponse" message="tns:IContractorShare_GetJobRateInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/CreateEvent" message="tns:IContractorShare_CreateEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/CreateEventResponse" message="tns:IContractorShare_CreateEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/EditEvent" message="tns:IContractorShare_EditEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/EditEventResponse" message="tns:IContractorShare_EditEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/DeleteEvent" message="tns:IContractorShare_DeleteEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/DeleteEventResponse" message="tns:IContractorShare_DeleteEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/GetUserEvents" message="tns:IContractorShare_GetUserEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContractorShare/GetUserEventsResponse" message="tns:IContractorShare_GetUserEvents_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddSuggestion">
       <wsdl:input wsaw:Action="http://tempuri.org/IContractorShare/AddSuggestion" message="tns:IContractorShare_AddSuggestion_InputMessage" />
@@ -1071,6 +1111,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetJobRateInfoList">
       <soap:operation soapAction="http://tempuri.org/IContractorShare/GetJobRateInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditEvent">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/EditEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEvents">
+      <soap:operation soapAction="http://tempuri.org/IContractorShare/GetUserEvents" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

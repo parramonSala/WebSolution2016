@@ -1,0 +1,89 @@
+﻿
+@model MvcContractorShareApplication.Models.CreateProposalModel
+@{
+    ViewBag.Title = "CreateProposal";
+}
+
+    @Html.Partial("_NavBar")
+
+
+@section featured {
+
+<div class="jumbotron jumbotron-special">
+        <div class="container" >
+            <h2  id="testolga" style="font-family:Calibri; font-size:24px; font-weight:bold">Create new Proposal</h2>
+            <p style="font-family:Calibri; font-size:18px"> 
+                Create a new proposal to the contractor: @Model.ToUserName
+                <br />
+                Once a proposal is created it will be sent to the Contractor who will be able to accept or reject your proposal.
+
+               </div>
+    </div>
+    }
+
+<div class="container">
+
+@using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                
+                //Show Validation Summary if there's any error
+                if (ViewData.ModelState.Any(x => x.Value.Errors.Any())) 
+                { 
+                   <div  class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      @Html.ValidationSummary(true)
+                   </div>
+                }
+    
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		                <form role="form">
+                            <fieldset>
+
+                                <div class="form-group">
+
+                                     <!--  Hidden fields -->
+                                    @Html.HiddenFor(m => m.JobId, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.JobName, new { @class = "form-control" })
+                                    @Html.HiddenFor(m => m.ToUserId, new { @class = "form-control" })
+                                    <!-- End Hidden fields -->
+
+                                    <label>Job</label><br />
+                                    @Html.DropDownListFor(m => m.SelectedJobId,
+                                         new SelectList(Model.JobsList,
+                                        "JobId", "JobName",
+                                        Model.JobsList.First().JobId))
+                                    <br /><br />
+
+                                    <label>Message</label>
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", id="message"})
+                                    @Html.ValidationMessageFor(m => m.Message,String.Empty , new { @class = "help-inline", @style="color:red" })
+                                    <br />
+
+                                    <label>Proposed Date and Time</label>
+                                    @Html.TextAreaFor(m => m.ProposedTime, new { @class = "form-control", id="aproxduration"})
+                                    @Html.ValidationMessageFor(m => m.ProposedTime, null, new { @class = "help-inline", @style="color:red" })
+
+                                    <a class="btn btn-sm pull-right btn-primary" href='@Url.Action("Calendar", "Calendar", new { id=Model.ToUserId })'>
+                                    <i class="fa fa-calendar"></i> View Calendar  </a>
+
+
+                                </div>
+
+                                <hr class="colorgraph">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <input type="submit" value="Create Proposal" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                </div>
+                            </fieldset>
+		                </form>
+	                </div>
+                </div>
+}
+    </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

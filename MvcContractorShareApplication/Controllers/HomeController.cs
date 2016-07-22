@@ -98,6 +98,7 @@ namespace MvcContractorShareApplication.Controllers
                 serviceinfo.ClientID = (int)Session["userId"];
                 serviceinfo.StatusID = (int)ServiceStatusEnum.Open;
                 serviceinfo.PostedDate = null;
+                serviceinfo.Id = 0;
 
                 //search coord where??
                 serviceinfo.CoordX = -1;
