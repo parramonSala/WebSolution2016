@@ -688,7 +688,7 @@ namespace MvcContractorShareApplication.Controllers
             return View(edittask);
         }
 
-        //Edit Job- Post Action
+        //Edit Job Post Action
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
