@@ -58,8 +58,6 @@ namespace MvcContractorShareApplication.Controllers
                                
                 if (loginresult.UserId > 0)
                 {
-                    if (WebSecurity.Login(model.UserName, model.Password))
-                    {
                         userprofile.UserId = loginresult.UserId;
                         userprofile.UserName = model.UserName;
 
@@ -69,7 +67,6 @@ namespace MvcContractorShareApplication.Controllers
 
                         returnUrl = Url.Action("Index", "Home");
                         return Redirect(returnUrl);
-                    }
                 }
                 else
                 {
@@ -90,8 +87,6 @@ namespace MvcContractorShareApplication.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
-
             Session.RemoveAll();
 
             return RedirectToAction("Index", "Home");
@@ -168,14 +163,10 @@ namespace MvcContractorShareApplication.Controllers
 
                     if (registerresult.error.Equals("OK"))
                     {
-                        WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-
                         loginresult = ContractorShareService.Login(logininfo);
 
                         if (loginresult.UserId > 0)
                         {
-                            if (WebSecurity.Login(model.UserName, model.Password))
-                            {
                                 userprofile.UserId = loginresult.UserId;
                                 userprofile.UserName = model.UserName;
 
@@ -184,7 +175,6 @@ namespace MvcContractorShareApplication.Controllers
                                 Session["usertype"] = loginresult.UserType;
 
                                 return RedirectToAction("Index", "Home");
-                            }
                         }
                         else
                         {
@@ -242,14 +232,10 @@ namespace MvcContractorShareApplication.Controllers
 
                     if (registerresult.error.Equals("OK"))
                     {
-                        WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-
                         loginresult = ContractorShareService.Login(logininfo);
 
                         if (loginresult.UserId > 0)
                         {
-                            if (WebSecurity.Login(model.UserName, model.Password))
-                            {
                                 userprofile.UserId = loginresult.UserId;
                                 userprofile.UserName = model.UserName;
                                 Session["userId"] = loginresult.UserId;
@@ -257,8 +243,6 @@ namespace MvcContractorShareApplication.Controllers
                                 Session["usertype"] = loginresult.UserType;
 
                                 return RedirectToAction("Index", "Home");
-                                
-                            }
                         }
                         else
                         {
