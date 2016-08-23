@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 using System.IO;
 using MvcContractorShareApplication.Enumerations;
 
-
+// User Controller
 namespace MvcContractorShareApplication.Controllers
 {
     public class UserController : Controller
